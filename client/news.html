@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="plugins/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="icon" href="images/shoe.png"/>
+    <title>Mua giày giá rẻ</title>
+</head>
+<body>
+    <!--header-->
+    <header id="m-header"></header>
+
+    <div id="m-status" class="bg-status">
+        <div class="container">
+            <i>Trang chủ</i>
+            <span id="title-menu">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                <i id="title-select-menu"></i>
+            </span>
+        </div>
+    </div>
+
+    <!--trang chinh-->
+    <div id="m-main" class="container">
+
+    </div>
+
+    <!--footer-->
+    <footer id="m-footer" class="footer"></footer>
+
+    <!--script-->
+    <script src="plugins/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/news.js"></script>
+    <script>
+        $(document).ready(function () {
+            testapi();
+        });
+
+        function testapi() {
+            var obj = new Object();
+            obj.UserName = "test";
+            obj.Password = "test";
+            obj.Email = "";
+            console.log(JSON.stringify(obj));
+            $.ajax({
+                type: "DELETE",
+                url: "http://localhost:51806/api/Account/test",
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                //data: JSON.stringify(obj),
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function () {
+                    console.log("that bai");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
