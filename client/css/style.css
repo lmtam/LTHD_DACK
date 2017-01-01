@@ -2,10 +2,10 @@
     padding: 0px;
 }
 
-.col-md .col-sm .col-xs{
-    padding-left: 0px;
-    padding-right: 0px;
-}
+/*.col-md .col-sm .col-xs{*/
+    /*padding-left: 0px;*/
+    /*padding-right: 0px;*/
+/*}*/
 
 .bg-top{
     width: 100%;
@@ -27,7 +27,8 @@
 }
 
 #m-main{
-    min-height: 420px;
+    padding-top: 100px;
+    min-height: 600px;
 }
 
 #main-right-top{
@@ -172,3 +173,27 @@
     font-size: 20px;
 }
 
+#m-header{
+    margin: 0 auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#m-left{
+    position: fixed;
+}
+
+.m-login {
+    padding: 20px;
+}
+
+.m-login-item {
+    padding-top: 10px;
+}
+
+.m-text-login {
+    font-size: 18px;
+    font-weight: bold;
+}
