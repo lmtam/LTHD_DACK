@@ -22,7 +22,7 @@ class Product{
     }
     function getProductById($product_id){
         try{
-            $sql = "SELECT * FROM products WHERE product_id := product_id";
+            $sql = "SELECT * FROM products WHERE product_id=:product_id";
 
             $temp=$this->con->prepare($sql);
             $temp->bindParam('product_id',$product_id);
@@ -35,12 +35,12 @@ class Product{
         }
     }
     function  addProduct($data){
-
+        
     }
 
     function deleteProduct($data){
         try{
-            $sql = "DELETE  FROM products WHERE product_id := product_id";
+            $sql = "DELETE  FROM products WHERE product_id=:product_id";
 
             $temp=$this->con->prepare($sql);
             $temp->bindParam('product_id',$product_id);

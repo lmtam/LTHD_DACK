@@ -22,7 +22,7 @@ class Order{
     }
     function getOrderById($order_id){
         try{
-            $sql = "SELECT * FROM orders WHERE order_id := order_id";
+            $sql = "SELECT * FROM orders WHERE order_id=:order_id";
 
             $temp=$this->con->prepare($sql);
             $temp->bindParam('order_id',$order_id);
@@ -40,7 +40,7 @@ class Order{
 
     function deleteOrder($order_id){
         try{
-            $sql = "DELETE  FROM orders WHERE order_id := order_id";
+            $sql = "DELETE  FROM orders WHERE order_id=:order_id";
 
             $temp=$this->con->prepare($sql);
             $temp->bindParam('order_id',$order_id);
