@@ -238,10 +238,32 @@ h3{
     font-weight: bold;
 }
 
-.like-shoe{
-    cursor: pointer;
-}
 
 .width-textarea {
     max-width: 100%;
+}
+
+.cus-border-top {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.product-cart {
+    padding: 10px;
+    background-color: rgba(188, 239, 127, 0.25);
+    -webkit-box-shadow: rgba(215, 215, 215, 0.79);
+    height: 100px;
+}
+
+.row{
+    margin: 0px;
+}
+
+.style-money {
+    color: red;
+    font-weight: bold;
+}
+
+.cus-bold {
+    font-weight: bold;
 }

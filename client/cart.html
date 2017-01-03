@@ -1,10 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="plugins/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="icon" href="images/shoe.png"/>
+    <title>Giỏ hàng</title>
 </head>
-<body>
+<body class="backgroup-body-prolife">
+    <!--header-->
+    <header id="m-header">
+        <div id="m-top" class="bg-top">
+            <div class="container" style="padding-top: 5px;color: #707070;">
+                <div class="pull-left">
+                    <h1 style="font-size:12px;font-weight: normal;margin:9px 0">Giày Việt Nam chất lượng cao</h1>
+                </div>
+                <div class="pull-right hidden-xs">
+                    <img src="images/vietnam.png" height="30" width="30">
+                    <img src="images/english.png" height="30" width="30">
+                </div>
+                <div class="input-group pull-right hidden-xs" style="width: 500px; padding-right:10px">
+                    <input class="form-control" placeholder="Tìm sản phẩm...." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
 
+        <div id="m-menu-bar">
+            <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">GIÀY ONLINE</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right hidden" id="no-login">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                    <span class="glyphicon glyphicon-user"></span>  Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                    <span class="glyphicon glyphicon-log-in"></span>  Đăng kí</a>
+                            </li>
+                        </ul>
+                        <!--sau khi dang nhap-->
+                        <ul class="nav navbar-nav navbar-right " id="logged">
+                            <li>
+                                <div class="dropdown" href="#">
+                                    <div class="dropdown-toggle user-name"data-toggle="dropdown">
+                                        <span class="fa fa-user"></span> Nguyễn Xuân Chương
+                                        <span class="caret"></span></div>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="profile.html">Trang cá nhân</a></li>
+                                        <li><a href="index.html">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li >
+                                <a href="cart.html">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--trang thai-->
+        <!--<div id="m-status" class="bg-status">-->
+        <!--<div class="container">-->
+        <!--<i>Trang chủ</i>-->
+        <!--&lt;!&ndash;<span id="title-menu">&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="fa fa-angle-double-right" aria-hidden="true"></i>&ndash;&gt;-->
+        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--</div>-->
+        <!--</div>-->
+    </header>
+
+    <!--trang chinh-->
+    <div id="m-main" class="container backgroup-prolife">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Giỏ hàng của tôi</h3>
+                    </div>
+                    <div class="col-sm-12 cus-padding-top">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                SẢN PHẨM
+                            </div>
+                            <div class="col-sm-2">
+                                GIÁ
+                            </div>
+                            <div class="col-sm-2">
+                                SỐ LƯỢNG
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 product-cart">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img src="images/1.jpg" class="img-responsive">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="cus-bold">Giày bata nữ fashion S109 SID38495</div>
+                                <div>
+                                    Size:
+                                    <span>S</span>
+                                </div>
+                                <div>
+                                    Màu sắc:
+                                    <span>Đỏ</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="style-money">100.000<span> VND</span></div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div>3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Thông tin đơn hàng</h3>
+                    </div>
+                    <div class="col-sm-12" style="padding-top: 30px; font-size: 16px">
+                        <div class="cus-bold">Tổng tiền:
+                            <span class="style-money">100.000<span> VND</span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 cus-padding-top">
+                        <button class="btn btn-warning btn-lg btn-block">TIẾN HÀNH THANH TOÁN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer id="m-footer" class="footer">
+        <div>
+            <span class="fa fa-facebook-square footer-icon"></span>
+            <span class="fa fa-twitter-square footer-icon"></span>
+            <span class="fa fa-google-plus-square footer-icon"></span>
+            <span class="fa fa-youtube-square footer-icon"></span>
+        </div>
+        <div>
+            <div>SĐT: 01627658556, gặp Anh Chương</div>
+            <div>Địa chỉ: 227 Nguyễn Văn Cừ, Phường 4, Quận 5, Thành phố Hồ Chí Minh</div>
+        </div>
+    </footer>
+
+    <!--script-->
+    <script src="plugins/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/Jquery.Animation.Text/jquery.textillate.js"></script>
+    <script src="plugins/Jquery.Animation.Text/jquery.lettering.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>
