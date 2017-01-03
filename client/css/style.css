@@ -2,10 +2,14 @@
     padding: 0px;
 }
 
-/*.col-md .col-sm .col-xs{*/
-    /*padding-left: 0px;*/
-    /*padding-right: 0px;*/
-/*}*/
+.col-md .col-sm .col-xs{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+label{
+    font-weight: normal;
+    padding-top: 8px;
+}
 
 .bg-top{
     width: 100%;
@@ -112,6 +116,7 @@
     height: 28px;
     cursor: pointer;
     border: 1px solid #ddd;
+    text-align: center;
 }
 
 .c-red{
@@ -196,4 +201,47 @@
 .m-text-login {
     font-size: 18px;
     font-weight: bold;
+}
+
+.user-name {
+    font-size: 14px;
+    padding-top: 15px;
+    cursor: pointer;
+    color: #ababab;
+}
+
+.user-name:hover{
+    color: #eee;
+}
+
+.cus-padding-top{
+    padding-top: 10px;
+}
+
+.cus-align-right{
+    text-align: right;
+}
+
+.backgroup-body-prolife{
+    background-color: #f6f6f6;
+}
+
+.backgroup-prolife{
+    background-color: #ffffff;
+}
+
+.detail-image {
+    border: 1px solid #ddd;
+}
+
+h3{
+    font-weight: bold;
+}
+
+.like-shoe{
+    cursor: pointer;
+}
+
+.width-textarea {
+    max-width: 100%;
 }

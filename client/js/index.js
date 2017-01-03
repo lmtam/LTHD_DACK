@@ -2,7 +2,7 @@
 //load du lieu san khi load trang
 $(document).ready(function () {
     var strShoe = '' +
-        '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="BuyShoe()">' +
+        '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe()">' +
         '<img src="images/4.jpg" class="img-responsive center-block img-shoe"/>' +
         '<div>Giày Tây Nam Da Cột Dây Thời Trang Zapas GT026 (Đen ) + Tặng Ví Nam Thời Trang</div>' +
         '<div class="price-shoe"><span>400.000</span><span>&nbsp;VND</span></div>' +
@@ -115,4 +115,9 @@ function btnLogin() {
 //nhap dang ki
 function btnRegister() {
     $('.nav li a[href="#formregister"]').tab('show');
+}
+
+//mua giay
+function btnBuyShoe() {
+    window.location.href = "sale.html";
 }

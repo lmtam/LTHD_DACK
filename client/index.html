@@ -1,7 +1,7 @@
 ﻿ <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
     <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="plugins/animate.css" rel="stylesheet"/>
@@ -9,7 +9,7 @@
     <link rel="icon" href="images/shoe.png"/>
     <title>Mua giày giá rẻ</title>
 </head>
-<body>
+<body class="backgroup-body-prolife">
     <!--header-->
     <header id="m-header">
         <div id="m-top" class="bg-top">
@@ -45,7 +45,7 @@
                         <a class="navbar-brand" href="index.html">GIÀY ONLINE</a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav navbar-right" id="no-login">
+                        <ul class="nav navbar-nav navbar-right hidden" id="no-login">
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#myModal">
                                     <span class="glyphicon glyphicon-user"></span>  Đăng nhập</a>
@@ -56,8 +56,25 @@
                             </li>
                         </ul>
                         <!--sau khi dang nhap-->
-                        <ul class="nav navbar-nav navbar-right hidden" id="logged">
-
+                        <ul class="nav navbar-nav navbar-right " id="logged">
+                            <li>
+                                <div class="dropdown" href="#">
+                                    <div class="dropdown-toggle user-name"data-toggle="dropdown">
+                                        <span class="fa fa-user"></span> Nguyễn Xuân Chương
+                                        <span class="caret"></span></div>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="profile.html">Trang cá nhân</a></li>
+                                        <li><a href="index.html">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li >
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -228,7 +245,7 @@
     </div>
 
     <!--trang chinh-->
-    <div id="m-main" class="container">
+    <div id="m-main" class="container backgroup-prolife">
         <div class="row">
 
             <!--main left-->
@@ -284,7 +301,7 @@
             <div class="col-sm-2 hidden-xs"></div>
 
             <!--main right-->
-            <div class="col-sm-10 col-xs-12" style="padding-left: 30px; padding-bottom: 50px">
+            <div class="col-sm-10 col-xs-12" style="padding: 30px">
                 <div class="row hidden" id="main-right-top">
                     <div  class="col-sm-12">
                         <div class="pull-left">
@@ -314,7 +331,7 @@
                                 </ul>
                             </span>
                         </div>
-                        <div id="myCarousel" class="carousel slide col-sm-8" data-ride="carousel" style="z-index: -2">
+                        <div id="myCarousel" class="carousel slide col-sm-8" data-ride="carousel">
                             <!-- Indicators -->
                             <ol class="carousel-indicators">
                                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
