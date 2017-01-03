@@ -1,0 +1,409 @@
+﻿ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="plugins/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="icon" href="images/shoe.png"/>
+    <title>Mua giày giá rẻ</title>
+</head>
+<body class="backgroup-body-prolife">
+    <!--header-->
+    <header id="m-header">
+        <div id="m-top" class="bg-top">
+            <div class="container" style="padding-top: 5px;color: #707070;">
+                <div class="pull-left">
+                    <h1 style="font-size:12px;font-weight: normal;margin:9px 0">Giày Việt Nam chất lượng cao</h1>
+                </div>
+                <div class="pull-right hidden-xs">
+                    <img src="images/vietnam.png" height="30" width="30">
+                    <img src="images/english.png" height="30" width="30">
+                </div>
+                <div class="input-group pull-right hidden-xs" style="width: 500px; padding-right:10px">
+                    <input class="form-control" placeholder="Tìm sản phẩm...." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div id="m-menu-bar">
+            <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">GIÀY ONLINE</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right hidden" id="no-login">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                    <span class="glyphicon glyphicon-user"></span>  Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                    <span class="glyphicon glyphicon-log-in"></span>  Đăng kí</a>
+                            </li>
+                        </ul>
+                        <!--sau khi dang nhap-->
+                        <ul class="nav navbar-nav navbar-right " id="logged">
+                            <li>
+                                <div class="dropdown" href="#">
+                                    <div class="dropdown-toggle user-name"data-toggle="dropdown">
+                                        <span class="fa fa-user"></span> Nguyễn Xuân Chương
+                                        <span class="caret"></span></div>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="profile.html">Trang cá nhân</a></li>
+                                        <li><a href="index.html">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li >
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!--trang thai-->
+        <!--<div id="m-status" class="bg-status">-->
+            <!--<div class="container">-->
+                <!--<i>Trang chủ</i>-->
+                <!--&lt;!&ndash;<span id="title-menu">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="fa fa-angle-double-right" aria-hidden="true"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    </header>
+
+    <!--dialog dang nhap va dang ki-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#formlogin" onclick="btnLogin()">Đăng nhập</a></li>
+                        <li><a data-toggle="tab" href="#formregister" onclick="btnRegister()">Đăng kí</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!--dang nhap-->
+                        <div id="formlogin" class="tab-pane fade in active">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-6 m-login">
+                                        <div class="row">
+                                            <div class="col-sm-4">Địa chỉ email *</div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row m-login-item">
+                                            <div class="col-sm-4">Mật khẩu *</div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="m-login-item">
+                                                <div class="col-sm-4">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <button class="btn btn-warning">Đăng nhập</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-4 m-login">
+                                        <div class="row">
+                                            <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
+                                            <div class="m-login-item col-sm-12">
+                                                 <button class="btn btn-primary btn-lg btn-block" type="button">
+                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                     Facebook
+                                                 </button>
+                                            </div>
+                                            <div class="m-login-item col-sm-12">
+                                                <button class="btn btn-danger btn-lg btn-block" type="button">
+                                                    <i class="fa fa-google" aria-hidden="true"></i>
+                                                    Google
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--dang ki-->
+                        <div id="formregister" class="tab-pane fade">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-6 m-login">
+                                        <div class="row">
+                                            <div class="col-sm-4">Tên *</div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row m-login-item" >
+                                            <div class="col-sm-4">Địa chỉ email *</div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row m-login-item">
+                                            <div class="col-sm-4">Mật khẩu *</div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row m-login-item">
+                                            <div class="col-sm-4">Nhập lại mật khẩu *</div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row m-login-item">
+                                            <div class="col-sm-4">Năm sinh</div>
+                                            <div class="col-sm-2">
+                                                <select>
+                                                    <option>Ngày</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <select>
+                                                    <option>Tháng</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <select>
+                                                    <option>Năm</option>
+                                                    <option>1991</option>
+                                                    <option>1992</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="m-login-item">
+                                                <div class="col-sm-4">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <button class="btn btn-warning">Đăng kí</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-4 m-login">
+                                        <div class="row">
+                                            <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
+                                            <div class="m-login-item col-sm-12">
+                                                <button class="btn btn-primary btn-lg btn-block" type="button">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    Facebook
+                                                </button>
+                                            </div>
+                                            <div class="m-login-item col-sm-12">
+                                                <button class="btn btn-danger btn-lg btn-block" type="button">
+                                                    <i class="fa fa-google" aria-hidden="true"></i>
+                                                    Google
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--trang chinh-->
+    <div id="m-main" class="container backgroup-prolife">
+        <div class="row">
+
+            <!--main left-->
+            <div class="col-sm-2 hidden-xs" id="m-left">
+                <div class="main-left-1">
+                    <div class="item-shoe-fashion-header">Giày thời trang</div>
+                    <div class="item-shoe-fashion" id="shoemale" onclick="GoShoeMale()">Giày nam</div>
+                    <div class="item-shoe-fashion" id="shoefemale" onclick="GoShoeFemale()">Giày nữ</div>
+                    <div class="item-shoe-fashion" id="promotionproduct" onclick="GoPromotionProduct()">Giày giảm giá</div>
+                    <div class="item-shoe-fashion" id="newproduct" onclick="GoNewProduct()">Giày mới về</div>
+                </div>
+                <div class="main-left-2">
+                    <div class="item-shoe-fashion-header">
+                        <div >Tìm nâng cao</div>
+                    </div>
+                    <div class="item-search-main">
+                        <i>Giá từ</i>
+                        <select class="form-control">
+                            <option>100.000</option>
+                            <option>200.000</option>
+                            <option>300.000</option>
+                            <option>400.000</option>
+                            <option>500.000</option>
+                        </select>
+                        <i>Giá đến</i>
+                        <select class="form-control">
+                            <option>600.000</option>
+                            <option>700.000</option>
+                            <option>800.000</option>
+                            <option>900.000</option>
+                            <option>1.000.000</option>
+                        </select>
+                        <div style="padding: 10px; text-align: center">
+                            <button class="btn btn-default">Tìm kiếm</button>
+                        </div>
+                        <i>Màu sắc</i>
+                        <div>
+                            <div class="filter-color c-red" title="Đỏ"></div>
+                            <div class="filter-color c-orange" title="Cam"></div>
+                            <div class="filter-color c-yellow" title="Vàng"></div>
+                            <div class="filter-color c-green" title="Xanh lá"></div>
+                            <div class="filter-color c-blue" title="Xanh lam"></div>
+                            <div class="filter-color c-brown" title="Xám"></div>
+                            <div class="filter-color c-pink" title="Hồng"></div>
+                            <div class="filter-color c-black" title="Đen"></div>
+                            <div class="filter-color c-white" title="Trắng"></div>
+                            <div class="filter-color c-multicolor" title="Nhiều màu sắc"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 hidden-xs"></div>
+
+            <!--main right-->
+            <div class="col-sm-10 col-xs-12" style="padding: 30px">
+                <div class="row hidden" id="main-right-top">
+                    <div  class="col-sm-12">
+                        <div class="pull-left">
+                            <span class="title-menu" id="title-submenu">Giày nam</span>
+                            <i>(100 sản phẩn)</i>
+                        </div>
+                        <div class="pull-right" style="padding-left: 20px">
+                            <span>Xem:&nbsp;&nbsp;</span>
+                            <i title="Xem dạng lưới" class="fa fa-th-large view-icon" aria-hidden="true"></i>&nbsp;&nbsp;
+                            <i title="Xem dạng danh sách" class="fa fa-th-list view-icon" aria-hidden="true"></i>
+                        </div>
+                        <div class="pull-right">
+                            <span>Sắp xếp theo:&nbsp;&nbsp;</span>
+                            <select>
+                                <option>Giá: thấp đến cao</option>
+                                <option>Giá: cao xuống thấp</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="main-right" >
+                    <div style="min-height: 450px;">
+                        <div class="col-sm-2">
+                            <span class="tlt" style="color: red; font-size: 24px">
+                                <ul class="texts">
+                                    <li>Hàng Việt Nam Chất lượng cao.</li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div id="myCarousel" class="carousel slide col-sm-8" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="images/slide1.jpg" alt="Flower" >
+                                </div>
+                                <div class="item">
+                                    <img src="images/slide2.jpg" alt="Chania">
+                                </div>
+                                <div class="item">
+                                    <img src="images/slide3.jpg" alt="Flower">
+                                </div>
+                                <div class="item">
+                                    <img src="images/slide4.jpg" alt="Flower">
+                                </div>
+                                <div class="item">
+                                    <img src="images/slide5.jpg" alt="Chania" >
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="carousel-control" style="left: 0; right: auto" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control" style="right: 0; left: auto" href="#myCarousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="tlt" style="color: red; font-size: 24px">
+                                <ul class="texts">
+                                    <li>Giảm giá 20% các mặt hàng nếu đơn hàng lớn hơn 1,000,000đ</li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+
+                    <h3>Giày phổ biến hiện nay (100 sản phẩm)</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer id="m-footer" class="footer">
+        <div>
+            <span class="fa fa-facebook-square footer-icon"></span>
+            <span class="fa fa-twitter-square footer-icon"></span>
+            <span class="fa fa-google-plus-square footer-icon"></span>
+            <span class="fa fa-youtube-square footer-icon"></span>
+        </div>
+        <div>
+            <div>SĐT: 01627658556, gặp Anh Chương</div>
+            <div>Địa chỉ: 227 Nguyễn Văn Cừ, Phường 4, Quận 5, Thành phố Hồ Chí Minh</div>
+        </div>
+    </footer>
+
+    <!--script-->
+    <script src="plugins/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/Jquery.Animation.Text/jquery.textillate.js"></script>
+    <script src="plugins/Jquery.Animation.Text/jquery.lettering.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
