@@ -32,7 +32,7 @@ label{
 
 #m-main{
     padding-top: 100px;
-    min-height: 600px;
+    min-height: 550px;
 }
 
 #main-right-top{
@@ -82,8 +82,7 @@ label{
 }
 
 .view-shoe{
-    border: 1px solid #fff;
-    height: 360px;
+    padding-top: 5px;
     cursor: pointer;
 }
 
@@ -93,7 +92,9 @@ label{
 }
 
 #main-right .view-shoe:hover{
-    border: 1px solid #ddd;
+    opacity: 0.95;
+    background-color: rgba(11, 255, 196, 0.23);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .price-shoe{
@@ -184,6 +185,7 @@ label{
     left: 0;
     right: 0;
     z-index: 1;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 #m-left{
@@ -251,8 +253,7 @@ h3{
 .product-cart {
     padding: 10px;
     background-color: rgba(188, 239, 127, 0.25);
-    -webkit-box-shadow: rgba(215, 215, 215, 0.79);
-    height: 100px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .row{
@@ -266,4 +267,9 @@ h3{
 
 .cus-bold {
     font-weight: bold;
+}
+
+.normal-page {
+    padding-top: 50px;
+    min-height: 550px;
 }

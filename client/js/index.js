@@ -119,5 +119,5 @@ function btnRegister() {
 
 //mua giay
 function btnBuyShoe() {
-    window.location.href = "sale.html";
+    window.location.href = "detail.html";
 }

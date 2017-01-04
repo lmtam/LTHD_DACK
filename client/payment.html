@@ -4,35 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
     <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="plugins/animate.css" rel="stylesheet"/>
+    <link href="plugins/jquery-sweet-alert/sweetalert.css" rel="stylesheet"/>
+    <link href="plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <link rel="icon" href="images/shoe.png"/>
-    <title>Chi tiết đơn hàng</title>
+    <title>Thanh toán</title>
 </head>
 <body class="backgroup-body-prolife">
     <!--header-->
     <header id="m-header">
-        <div id="m-top" class="bg-top">
-            <div class="container" style="padding-top: 5px;color: #707070;">
-                <div class="pull-left">
-                    <h1 style="font-size:12px;font-weight: normal;margin:9px 0">Giày Việt Nam chất lượng cao</h1>
-                </div>
-                <div class="pull-right hidden-xs">
-                    <img src="images/vietnam.png" height="30" width="30">
-                    <img src="images/english.png" height="30" width="30">
-                </div>
-                <div class="input-group pull-right hidden-xs" style="width: 500px; padding-right:10px">
-                    <input class="form-control" placeholder="Tìm sản phẩm...." />
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-
         <div id="m-menu-bar">
             <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
                 <div class="container">
@@ -45,7 +25,6 @@
                         <a class="navbar-brand" href="index.html">GIÀY ONLINE</a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-
                         <ul class="nav navbar-nav navbar-right hidden" id="no-login">
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#myModal">
@@ -94,69 +73,76 @@
     </header>
 
     <!--trang chinh-->
-    <div id="m-main" class="container backgroup-prolife">
+    <div class="container normal-page backgroup-prolife">
         <div class="row">
             <div class="col-sm-6">
-                <img src="images/1.jpg" class="img-responsive center-block detail-image">
-            </div>
-            <div class="col-sm-6">
-                <h3>Giày bata nữ fashion S109 SID38495</h3>
-                <div>Chất liệu mũi dày được làm bằng da bền đẹp, mang đến nét sang trọng, miếng lót mềm, đem lại sự êm ái. Thiết kế dạng giày mọi tiện lợi, mang đến phong cách năng động, hiện đại.</div>
-                <div>
-                    <label>
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        Thích (100)
-                    </label>
-                </div>
-                <div>
-                    <h3 class="style-money">Giá:
-                        <span>100.000</span>
-                        <span>VND</span>
-                    </h3>
-                </div>
-
-                <div class="cus-border-top">
-                    <label>Chọn size: </label>
-                    <select>
-                        <option>38</option>
-                        <option>39</option>
-                        <option>40</option>
-                        <option>41</option>
-                        <option>42</option>
-                    </select>
-                    <label style="padding-left: 20px">Số lượng: </label>
-                    <select>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-
-                <div class="cus-padding-top">
-                    <button class="btn btn-primary btn-lg">
-                        <i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="row">
-                    <h3>Bình luận</h3>
-                </div>
-                <div class="row">
-                    <div class="col-sm-1">
-                        <img src="images/user.jpg" height="50" width="50">
+                <h3 >Địa chỉ giao hàng</h3>
+                <!--ten-->
+                <div class="row cus-padding-top">
+                    <div class="col-sm-3 text-right">
+                        <label>Tên</label>
                     </div>
-                    <div class="col-sm-10 ">
-                        <textarea class="form-control width-textarea" placeholder="Nhập bình luận"></textarea>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+                <!--dia chi-->
+                <div class="row cus-padding-top">
+                    <div class="col-sm-3 text-right">
+                        <label>Địa chỉ</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+                <!--email-->
+                <div class="row cus-padding-top">
+                    <div class="col-sm-3 text-right">
+                        <label>Email</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+                <!--sdt-->
+                <div class="row cus-padding-top">
+                    <div class="col-sm-3 text-right">
+                        <label>Số điện thoại</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row cus-padding-top">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="checkbox" disabled="disabled" checked="checked"/>
+                        Thanh toán khi giao hàng
+                    </div>
+                </div>
+                <div class="row cus-padding-top">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-8">
+                        <button class="btn btn btn-warning btn-lg" onclick="btnDatHangThanhCong()">Đặt hàng</button>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2"></div>
+            <div class="col-sm-6 cus-padding-top">
+                <h3 >Thông tin đơn hàng</h3>
+                <table id="tblPayment" class="table-responsive ">
+                    <thead>
+                    <tr>
+                        <th data-width="70%" data-field="Name">Tên sản phẩm</th>
+                        <th data-width="30%" data-field="Price">Giá</th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="cus-bold">Tổng tiền:
+                    <span class="style-money">100.000<span> VND</span></span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -177,8 +163,8 @@
     <!--script-->
     <script src="plugins/jquery.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/Jquery.Animation.Text/jquery.textillate.js"></script>
-    <script src="plugins/Jquery.Animation.Text/jquery.lettering.js"></script>
-    <script src="js/sale.js"></script>
+    <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="plugins/jquery-sweet-alert/sweetalert.min.js"></script>
+    <script src="js/payment.js"></script>
 </body>
 </html>

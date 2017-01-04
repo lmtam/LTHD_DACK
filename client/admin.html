@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="plugins/file-input/bootstrap-fileinput.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="icon" href="images/shoe.png"/>
+    <title>Admin</title>
+</head>
+<body class="backgroup-body-prolife">
+    <div class="container backgroup-prolife" style="padding: 10px">
+        <div class="row" style="border-bottom: 1px solid #ddd">
+            <div class="col-sm-6">
+                <h3>Thêm sản phẩm</h3>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button class="btn btn-success ">Lưu sản phẩm</button>
+            </div>
+        </div>
+
+        <div class="row cus-padding-top">
+            <div class="col-sm-3">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="height: 128px">
+                        <img src="images/hoamai.jpg" alt="" />
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-height: 128px; max-width: 100%;line-height: 10px">
+                    </div>
+                    <div id="divSelectFile" class="Status_Save">
+                        <span class="btn btn-default btn-file">
+                            <span class="fileinput-new"> Chọn hình </span>
+                            <span class="fileinput-exists"> Thay đổi </span>
+                            <input type="hidden" value="" name=""/>
+                            <input id="uploader" type="file" name="iUpload" accept="image/*"/>
+                        </span>
+                        <a class="btn btn-danger fileinput-exists" data-dismiss="fileinput" > Xóa hình </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9" id="divProductDetail">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Tên sp</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Giá sp</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row cus-padding-top" style="border-bottom: 1px solid #ddd; padding-bottom: 10px">
+                    <div class="col-sm-2">
+                        <label>Loại sp</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Mô tả sp</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row cus-padding-top">
+                    <div class="col-sm-1">
+                        <label>Size</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="col-sm-1">
+                        <label>Màu</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Số lượng</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="col-sm-2 cus-padding-top">
+                        <a href="#" onclick="btnThemChiTietSanPham()">Thêm dòng</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="plugins/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/file-input/bootstrap-fileinput.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

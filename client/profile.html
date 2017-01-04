@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
     <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="plugins/animate.css" rel="stylesheet"/>
+    <link href="plugins/file-input/bootstrap-fileinput.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet"/>
     <link rel="icon" href="images/shoe.png"/>
     <title>Thông tin thành viên</title>
@@ -12,27 +12,6 @@
 <body class="backgroup-body-prolife">
     <!--header-->
     <header id="m-header">
-        <div id="m-top" class="bg-top">
-            <div class="container" style="padding-top: 5px;color: #707070;">
-                <div class="pull-left">
-                    <h1 style="font-size:12px;font-weight: normal;margin:9px 0">Giày Việt Nam chất lượng cao</h1>
-                </div>
-                <div class="pull-right hidden-xs">
-                    <img src="images/vietnam.png" height="30" width="30">
-                    <img src="images/english.png" height="30" width="30">
-                </div>
-                <div class="input-group pull-right hidden-xs" style="width: 500px; padding-right:10px">
-                    <input class="form-control" placeholder="Tìm sản phẩm...." />
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-
         <div id="m-menu-bar">
             <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
                 <div class="container">
@@ -80,31 +59,21 @@
                 </div>
             </nav>
         </div>
-
-        <!--trang thai-->
-        <!--<div id="m-status" class="bg-status">-->
-        <!--<div class="container">-->
-        <!--<i>Trang chủ</i>-->
-        <!--&lt;!&ndash;<span id="title-menu">&ndash;&gt;-->
-        <!--&lt;!&ndash;<i class="fa fa-angle-double-right" aria-hidden="true"></i>&ndash;&gt;-->
-        <!--&lt;!&ndash;</span>&ndash;&gt;-->
-        <!--</div>-->
-        <!--</div>-->
     </header>
 
     <!--trang chinh-->
-    <div id="m-main" class="container backgroup-prolife">
+    <div class="container normal-page backgroup-prolife">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-md-12 text-center">
+                <h2 style="text-align: center">Thông tin cá nhân</h2>
+            </div>
+            <div class="col-sm-6" style="padding: 0px">
                 <!--ten-->
                 <div class="row">
-                    <div class="col-md-12">
-                        <h2 style="text-align: center">Thông tin cá nhân</h2>
-                    </div>
                     <div class="col-sm-4 cus-align-right">
                         <label>Tên</label>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" value="Nguyễn Xuân Chương" readonly="readonly"/>
                     </div>
                 </div>
@@ -113,7 +82,7 @@
                     <div class="col-sm-4 cus-align-right">
                         <label>Email</label>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" value="nxchuong055@gmail.com" readonly="readonly"/>
                     </div>
                 </div>
@@ -122,7 +91,7 @@
                     <div class="col-sm-4 cus-align-right">
                         <label>Mật khẩu</label>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         <input type="password" class="form-control" value="12345678" readonly="readonly"/>
                     </div>
                 </div>
@@ -131,14 +100,14 @@
                     <div class="col-sm-4 cus-align-right">
                         <label>Ngày tháng năm sinh</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <select class="form-control" readonly="readonly">
                             <option>Ngày</option>
                             <option>2</option>
                             <option>3</option>
                         </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <select class="form-control" readonly="readonly">
                             <option>Tháng</option>
                             <option>2</option>
@@ -153,33 +122,42 @@
                         </select>
                     </div>
                 </div>
-                <!--nut chinh sua-->
-                <div class="row cus-padding-top">
-                    <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-6">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="height: 128px">
+                        <img src="images/hoamai.jpg" alt="" />
                     </div>
-                    <div class="col-sm-3">
-                        <button class="btn btn-warning btn-block">
-                            <i class="fa fa-edit"></i>
-                            Chỉnh sửa</button>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-height: 128px; max-width: 100%;line-height: 10px">
                     </div>
-                    <div class="col-sm-3">
-                        <button class="btn btn-success btn-block">
-                            <i class="fa fa-floppy-o"></i>
-                            Lưu</button>
+                    <div id="divSelectFile" class="Status_Save">
+                        <span class="btn btn-default btn-file">
+                            <span class="fileinput-new"> Chọn hình </span>
+                            <span class="fileinput-exists"> Thay đổi </span>
+                            <input type="hidden" value="" name=""/>
+                            <input id="uploader" type="file" name="iUpload" accept="image/*"/>
+                        </span>
+                        <a class="btn btn-danger fileinput-exists" data-dismiss="fileinput" > Xóa hình </a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <img src="images/xuan.jpg" class="img-responsive center-block">
-            </div>
+
         </div>
-        <div class="row cus-padding-top">
-            <div class="col-sm-6">
-                <img src="images/hoamai.jpg" class="img-responsive center-block">
+        <div class="row" style="padding-top: 30px">
+            <!--nut chinh sua-->
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <button class="btn btn-warning btn-block btn-lg">
+                    <i class="fa fa-edit"></i>
+                    Chỉnh sửa</button>
             </div>
-            <div class="col-sm-6 ">
-                <img src="images/hoamai.jpg" class="img-responsive center-block">
+            <div class="col-sm-3">
+                <button class="btn btn-success btn-block btn-lg">
+                    <i class="fa fa-floppy-o"></i>
+                    Lưu</button>
             </div>
+            <div class="col-sm-3"></div>
         </div>
     </div>
 
@@ -200,8 +178,7 @@
     <!--script-->
     <script src="plugins/jquery.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/Jquery.Animation.Text/jquery.textillate.js"></script>
-    <script src="plugins/Jquery.Animation.Text/jquery.lettering.js"></script>
+    <script src="plugins/file-input/bootstrap-fileinput.js"></script>
     <script src="js/profile.js"></script>
 </body>
 </html>
