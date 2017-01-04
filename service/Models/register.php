@@ -23,7 +23,7 @@
 						try
 						{
 							// chưa hoàn thành
-							
+							Helper::Disconnection($this->con);
 							return 1;
 
 						}

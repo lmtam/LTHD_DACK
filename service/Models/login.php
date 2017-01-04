@@ -33,8 +33,10 @@
 							if($temp->rowCount())
 							{
 								$_SESSION["login"]=1;
+								Helper::Disconnection($this->con);
 								return 1;
 							}
+							Helper::Disconnection($this->con);
 							return 0;
 
 						}

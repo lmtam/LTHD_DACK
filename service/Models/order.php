@@ -1,6 +1,6 @@
 <?php
 require_once("Database/connection.php");
-require_once(dirname(__FILE__).'/order.php');
+require_once(dirname(__FILE__)."/helper.php");
 class Order{
     private $con;
     public function __construct()
@@ -13,7 +13,8 @@ class Order{
             $sql = "SELECT * FROM orders";
             $temp=$this->con->prepare($sql);
             $temp->excute();
-            $list = $temp->fetchAll(FETCH_BOTH);
+            $list = $temp->fetchAll(PDO::FETCH_BOTH);
+            Helper::Disconnection($this->con);
             return $list;
         }
         catch (Exception $e){
@@ -28,6 +29,7 @@ class Order{
             $temp->bindParam('order_id',$order_id);
             $temp->excute();
             $list = $temp->fetchAll(FETCH_BOTH);
+            Helper::Disconnection($this->con);
             return $list;
         }
         catch (Exception $e){
@@ -45,7 +47,8 @@ class Order{
             $temp=$this->con->prepare($sql);
             $temp->bindParam('order_id',$order_id);
             $temp->excute();
-            $list = $temp->fetchAll(FETCH_BOTH);
+            $list = $temp->fetchAll(PDO::FETCH_BOTH);
+            Helper::Disconnection($this->con);
             return $list;
         }
         catch (Exception $e){
