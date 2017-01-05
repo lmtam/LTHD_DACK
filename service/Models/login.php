@@ -17,40 +17,42 @@
 		{
 			$username=$array["username"];
 			$password=$array["password"];
-			if(isset($username) && isset($password))
-			{	
-				if(Helper::Check_string_length($username) && Helper::Check_string_length($password))
+			
+			try
+			{
+				$sql="SELECT admin FROM users WHERE user_name=:username AND password=:password";
+				$temp=$this->con->prepare($sql);
+				$temp->bindParam('username',$username);
+				$temp->bindParam('password',$password);
+				$temp->excute();
+				if($temp->rowCount())
 				{
-					if(Helper::Check_string($username) && Helper::Check_string($password))
+					$list=$temp->fetchAll(PDO::FETCH_BOTH);
+					$admin=$list["admin"];
+					if($admin=="Y")
 					{
-						try
-						{
-							$sql="SELECT * FROM accounts WHERE username=:username AND password=:password";
-							$temp=$this->con->prepare($sql);
-							$temp->bindParam('username',$username);
-							$temp->bindParam('password',$password);
-							$temp->excute();
-							if($temp->rowCount())
-							{
-								$_SESSION["login"]=1;
-								Helper::Disconnection($this->con);
-								return 1;
-							}
-							Helper::Disconnection($this->con);
-							return 0;
+						$_SESSION["login"]=1;
+						$_SESSION["admin"]=1;
 
-						}
-						catch(Exception $e)
-						{
-							return 0;
-						}
 					}
-					return 0;
-				}
-				return 0;
+					else
+					{
+						$_SESSION["login"]=1;
+						$_SESSION["admin"]=0;
+					}
 					
+					Helper::Disconnection($this->con);
+					return "Đăng nhập thành công";
+				}
+				Helper::Disconnection($this->con);
+				return "Đăng nhập thất bại";
+
 			}
-			return 0;
+			catch(Exception $e)
+			{
+				return $e->getMessage();
+			}
+				
 		}
 	}
 ?>

@@ -78,7 +78,9 @@ class Cart{
        
     }
 
-    function deleteOrder($user_id,$product_id){
+    function deleteOrder($data){
+        $user_id=$data["user_id"];
+        $product_id=$data["product_id"];
         try{
             $sql = "DELETE  FROM carts WHERE user_id=:user_id AND product_id=:product_id ";
 
@@ -86,9 +88,7 @@ class Cart{
             $temp->bindParam('user_id',$user_id);
             $temp->bindParam('product_id',$product_id);
             $temp->excute();
-            $list = $temp->fetchAll(PDO::FETCH_BOTH);
-            Helper::Disconnection($this->con);
-            return $list;
+            return "Xóa thành công";
         }
         catch (Exception $e){
             return $e->getMessage();

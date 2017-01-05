@@ -52,6 +52,7 @@ class Product{
      *      )
      */
     function  addProduct($data){
+        $product_id=-1;
         $name = $data['name'];
         $description = $data['description'];
         $type = $data['type'];
@@ -59,42 +60,64 @@ class Product{
         $image_name = $data['image_name'];
         $count = $data['count'];
         $created_day = new Date('Y-m-d H:i:s');
-        $sqlProduct = "INSERT INTO products (product_name,description,type,price,created_day,image_name,count)". "VALUES ( '$name','$description','$type','$price','$created_day','$image_name','$count')";
-        $temp=$this->con->prepare($sqlProduct);
-        $temp->execute();
+        try
+        {
+            $sqlProduct = "INSERT INTO products (product_name,description,type,price,created_day,image_name,count)". "VALUES ( '$name','$description','$type','$price','$created_day','$image_name','$count')";
+            $temp=$this->con->prepare($sqlProduct);
+            $temp->execute();
+        }
+         catch(Exception $e)
+        {
+            return $e->getMessage();
+        }
 
-        $sqlSelect = "SELECT product_id FROM products WHERE created_day=:created_day AND product_name=:name";
-        $temp1=$this->con->prepare($sqlSelect);
-        $temp1->bindParam('created_day',$created_day);
-        $temp1->bindParam('name',$name);
-        $temp1->execute();
+        try
+        {
+            $sqlSelect = "SELECT product_id FROM products WHERE created_day=:created_day AND product_name=:name";
+            $temp1=$this->con->prepare($sqlSelect);
+            $temp1->bindParam('created_day',$created_day);
+            $temp1->bindParam('name',$name);
+            $temp1->execute();
+            //lấy product_id từ temp1;
+            $list = $temp1->fetchAll(PDO::FETCH_BOTH);
+            $productId = $list['product_id'];
+        }
+        catch(Exception $e)
+        {
+            return $e->getMessage();
+        }
 
-        //lấy product_id từ temp1;
-        $list = $temp1->fetchAll(PDO::FETCH_BOTH);
-        $productId = $list['product_id'];
-
+        //lấy danh sách product cùng mã product_id nhưng khác nhau về màu sắc,size....    
         $listProductDetail = $data['product'];
         foreach ($listProductDetail as $item){
             $size = $item['size'];
             $color = $item['color'];
             $countDetail = $item['count'];
-            $sqlProductDetail = "INSERT INTO product_detail (product_id,size,color,count)"."VALUES ('$productId','$size','$color','$countDetail')";
-            $temp2 = $this->con->prepare($sqlProductDetail);
-            $temp2->execute();
+            try
+            {
+                $sqlProductDetail = "INSERT INTO product_detail (product_id,size,color,count)"."VALUES ('$productId','$size','$color','$countDetail')";
+                $temp2 = $this->con->prepare($sqlProductDetail);
+                $temp2->execute();
+            }
+            catch(Exception $e)
+            {
+                return $e->getMessage();
+            }
+           
         }
 
     }
 
-    function deleteProduct($data){
+    function deleteProduct($product_id){
         try{
             $sql = "DELETE  FROM products WHERE product_id=:product_id";
 
             $temp=$this->con->prepare($sql);
             $temp->bindParam('product_id',$product_id);
             $temp->excute();
-            $list = $temp->fetchAll(PDO::FETCH_BOTH);
+            
             Helper::Disconnection($this->con);
-            return $list;
+            return "Xóa thành công";
         }
         catch (Exception $e){
             return $e->getMessage();

@@ -13,31 +13,28 @@
 		{
 			$username=$array["username"];
 			$password=$array["password"];
+			$admin="N";
+			$created_day=new Date('Y-m-d H:i:s');
 
-			if(isset($username) && isset($password))
-			{	
-				if(Helper::Check_string_length($username) && Helper::Check_string_length($password))
-				{
-					if(Helper::Check_string($username) && Helper::Check_string($password))
-					{
-						try
-						{
-							// chưa hoàn thành
-							Helper::Disconnection($this->con);
-							return 1;
+			
+			try
+			{
+				// chưa hoàn thành
+				$sql="INSERT INTO users(user_name,password,created_day,admin) VALUES(:username,:password,:created_day,:admin)";
+				$temp=$this->con->prepare($sq;);
+				$temp->bindParam("username",$username);
+				$temp->bindParam("password",$password);
+				$temp->bindParam("created_day",$created_day);
+				$temp->bindParam("admin",$admin);
+				Helper::Disconnection($this->con);
+				return "Đăng kí thành công";
 
-						}
-						catch(Exception $e)
-						{
-							return 0;
-						}
-					}
-					return 0;
-				}
-				return 0;
-					
 			}
-			return 0;
+			catch(Exception $e)
+			{
+				return $e->getMessage();
+			}
+					
 		}
 		
 	}

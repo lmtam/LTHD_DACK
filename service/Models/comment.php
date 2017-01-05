@@ -29,9 +29,20 @@
 		}
 		public function addComment($data)
 		{
+			$product_detail_id=$data["product_detail_id"];
+			$content=$data["content"];
+			$user_id=$data["user_id"];
+			$created_day=new Date('Y-m-d H:i:s');
 			try
 			{
-
+				$sql="INSERT INTO comments(product_detail_id,content,user_id,created_day) VALUES(:product_detail_id,:content,:user_id,:created_day)";
+				$temp=$this->con->prepare($sql);
+				$temp->bindParam("product_detail_id",$product_detail_id);
+				$temp->bindParam("content",$content);
+				$temp->bindParam("user_id",$user_id);
+				$temp->bindParam("created_day",$created_day);
+				$temp->execute();
+				return "Thêm comment thành công";
 			}
 			catch(Exception $e)
 			{

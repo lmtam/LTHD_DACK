@@ -49,6 +49,7 @@ class Order{
      *      )
      */
     function  addOrder($data){
+        $orderId=null;
         $created_day    = new Date('Y-m-d H:i:s');
         $user_id        = $data['user_id'];
         $total_money    = $data['total_money'];
@@ -56,27 +57,55 @@ class Order{
         $address        = $data['address'];
         $phone          = $data['phone'];
         $email          = $data['email'];
-        $sqlOrder = "INSERT INTO orders (created_day,total_money,user_id,name,address,phone,email)". "VALUES ('$created_day','$user_id','$total_money','$name','$address','$phone','$email')";
-        $temp = $this->con->prepare($sqlOrder);
-        $temp->execute();
+        try
+        {
+            $sqlOrder = "INSERT INTO orders (created_day,total_money,user_id,name,address,phone,email)". "VALUES ('$created_day','$user_id','$total_money','$name','$address','$phone','$email')";
+            $temp = $this->con->prepare($sqlOrder);
+            $temp->execute();
+            
+        }
+        catch(Exception $e)
+        {
+            return $e->getMessage();
+        }
+        
+        try
+        {
+            $sqlSelect = "SELECT order_id FROM orders WHERE created_day=:created_day AND user_id=:user_id";
+            $temp1=$this->con->prepare($sqlSelect);
+            $temp1->bindParam('created_day',$created_day);
+            $temp1->bindParam('user_id',$user_id);
+            $temp1->execute();
+            //lấy product_id từ temp1;
+            $list = $temp1->fetchAll(PDO::FETCH_BOTH);
+            $orderId = $list['order_id'];
+        }
+        catch(Exception $e)
+        {
+            return $e->getMessage();
+        }
+        
 
-        $sqlSelect = "SELECT order_id FROM orders WHERE created_day=:created_day AND user_id=:user_id";
-        $temp1=$this->con->prepare($sqlSelect);
-        $temp1->bindParam('created_day',$created_day);
-        $temp1->bindParam('user_id',$user_id);
-        $temp1->execute();
 
-        //lấy product_id từ temp1;
-        $list = $temp1->fetchAll(PDO::FETCH_BOTH);
-        $orderId = $list['order_id'];
+        
 
         $listOrderDetail = $data['order_detail'];
         foreach ($listOrderDetail as $item){
             $product_detail_id = $item['product_detail_id'];
-            $sqlProductDetail = "INSERT INTO order_detail (product_detail_id)"."VALUES ('$product_detail_id')";
-            $temp2 = $this->con->prepare($sqlProductDetail);
-            $temp2->execute();
+            try
+            {
+                $sqlProductDetail = "INSERT INTO order_detail (product_detail_id)"."VALUES ('$product_detail_id')";
+                $temp2 = $this->con->prepare($sqlProductDetail);
+                $temp2->execute();
+            }
+            catch(Exception $e)
+            {
+                return $e->getMessage();
+            }
+            
         }
+        Helper::Disconnection($this->con);
+        return "Thêm thành công";
     }
 
     function deleteOrder($order_id){
@@ -86,9 +115,8 @@ class Order{
             $temp=$this->con->prepare($sql);
             $temp->bindParam('order_id',$order_id);
             $temp->excute();
-            $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);
-            return $list;
+            return "Xóa thành công";
         }
         catch (Exception $e){
             return $e->getMessage();
