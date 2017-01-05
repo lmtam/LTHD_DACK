@@ -1,5 +1,5 @@
 <?php
-	require_once("Database/connection.php");
+	require_once("Models/register.php");
 	require_once(dirname(__FILE__).'/helper.php');
 	class Register_Controller
 	{

@@ -1,6 +1,6 @@
 <?php
     require_once("Models/cart.php");
-    require_once(dirname(__FILE__)."helper.php");
+    require_once(dirname(__FILE__)."/helper.php");
     class Cart_Controller
     {
         private $model;
