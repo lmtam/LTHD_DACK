@@ -45,18 +45,18 @@
                         <a class="navbar-brand" href="index.html">GIÀY ONLINE</a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav navbar-right hidden" id="no-login">
+                        <ul class="nav navbar-nav navbar-right" id="no-login">
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                <a href="#" data-toggle="modal" data-target="#myModal" onclick="btnLogin()">
                                     <span class="glyphicon glyphicon-user"></span>  Đăng nhập</a>
                             </li>
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                <a href="#" data-toggle="modal" data-target="#myModal" onclick="btnRegister()">
                                     <span class="glyphicon glyphicon-log-in"></span>  Đăng kí</a>
                             </li>
                         </ul>
                         <!--sau khi dang nhap-->
-                        <ul class="nav navbar-nav navbar-right " id="logged">
+                        <ul class="nav navbar-nav navbar-right hidden" id="logged">
                             <li>
                                 <div class="dropdown" href="#">
                                     <div class="dropdown-toggle user-name"data-toggle="dropdown">
@@ -80,16 +80,6 @@
                 </div>
             </nav>
         </div>
-
-        <!--trang thai-->
-        <!--<div id="m-status" class="bg-status">-->
-            <!--<div class="container">-->
-                <!--<i>Trang chủ</i>-->
-                <!--&lt;!&ndash;<span id="title-menu">&ndash;&gt;-->
-                <!--&lt;!&ndash;<i class="fa fa-angle-double-right" aria-hidden="true"></i>&ndash;&gt;-->
-                <!--&lt;!&ndash;</span>&ndash;&gt;-->
-            <!--</div>-->
-        <!--</div>-->
     </header>
 
     <!--dialog dang nhap va dang ki-->
@@ -99,29 +89,33 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#formlogin" onclick="btnLogin()">Đăng nhập</a></li>
-                        <li><a data-toggle="tab" href="#formregister" onclick="btnRegister()">Đăng kí</a></li>
+                        <li class="active"><a data-toggle="tab" href="#formlogin" >Đăng nhập</a></li>
+                        <li><a data-toggle="tab" href="#formregister" >Đăng kí</a></li>
                     </ul>
                     <div class="tab-content">
                         <!--dang nhap-->
                         <div id="formlogin" class="tab-pane fade in active">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-sm-6 m-login">
+                                    <div class="col-sm-7 m-login">
                                         <div class="row">
-                                            <div class="col-sm-4">Địa chỉ email *</div>
+                                            <div class="col-sm-4 text-right">
+                                                <label>Địa chỉ email *</label>
+                                            </div>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control"/>
                                             </div>
                                         </div>
-                                        <div class="row m-login-item">
-                                            <div class="col-sm-4">Mật khẩu *</div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Mật khẩu *</label>
+                                            </div>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="m-login-item">
+                                            <div class="cus-padding-top">
                                                 <div class="col-sm-4">
                                                 </div>
                                                 <div class="col-sm-8">
@@ -131,17 +125,17 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-1"></div>
                                     <div class="col-sm-4 m-login">
                                         <div class="row">
                                             <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
-                                            <div class="m-login-item col-sm-12">
+                                            <div class="cus-padding-top col-sm-12">
                                                  <button class="btn btn-primary btn-lg btn-block" type="button">
                                                      <i class="fa fa-facebook" aria-hidden="true"></i>
                                                      Facebook
                                                  </button>
                                             </div>
-                                            <div class="m-login-item col-sm-12">
+                                            <div class="cus-padding-top col-sm-12">
                                                 <button class="btn btn-danger btn-lg btn-block" type="button">
                                                     <i class="fa fa-google" aria-hidden="true"></i>
                                                     Google
@@ -156,77 +150,85 @@
                         <!--dang ki-->
                         <div id="formregister" class="tab-pane fade">
                             <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-6 m-login">
+                                <div class="row m-login">
+                                    <div class="col-sm-7">
                                         <div class="row">
-                                            <div class="col-sm-4">Tên *</div>
+                                            <div class="col-sm-4 text-right">
+                                                <label>Tên *</label>
+                                            </div>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control"/>
                                             </div>
                                         </div>
-                                        <div class="row m-login-item" >
-                                            <div class="col-sm-4">Địa chỉ email *</div>
+                                        <div class="row cus-padding-top" >
+                                            <div class="col-sm-4 text-right">
+                                                <label>Địa chỉ email *</label>
+                                            </div>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control"/>
                                             </div>
                                         </div>
-                                        <div class="row m-login-item">
-                                            <div class="col-sm-4">Mật khẩu *</div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Mật khẩu *</label>
+                                            </div>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control"/>
                                             </div>
                                         </div>
-                                        <div class="row m-login-item">
-                                            <div class="col-sm-4">Nhập lại mật khẩu *</div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Nhập lại mật khẩu*</label>
+                                            </div>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control"/>
                                             </div>
                                         </div>
-                                        <div class="row m-login-item">
-                                            <div class="col-sm-4">Năm sinh</div>
-                                            <div class="col-sm-2">
-                                                <select>
-                                                    <option>Ngày</option>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right" style="padding: 0px">
+                                                <label>Ngày tháng năm sinh</label>
+                                            </div>
+                                            <div class="col-sm-2" style="padding-right: 0px">
+                                                <select class="form-control">
+                                                    <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-2">
-                                                <select>
-                                                    <option>Tháng</option>
+                                            <div class="col-sm-2" style="padding-right: 0px">
+                                                <select class="form-control">
+                                                    <option>12</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-2">
-                                                <select>
-                                                    <option>Năm</option>
+                                            <div class="col-sm-3">
+                                                <select class="form-control">
+                                                    <option>1990</option>
                                                     <option>1991</option>
                                                     <option>1992</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="m-login-item">
-                                                <div class="col-sm-4">
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <button class="btn btn-warning">Đăng kí</button>
-                                                </div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4">
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <button class="btn btn-warning">Đăng kí</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2"></div>
-                                    <div class="col-sm-4 m-login">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-4">
                                         <div class="row">
                                             <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
-                                            <div class="m-login-item col-sm-12">
+                                            <div class="cus-padding-top col-sm-12">
                                                 <button class="btn btn-primary btn-lg btn-block" type="button">
                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                                     Facebook
                                                 </button>
                                             </div>
-                                            <div class="m-login-item col-sm-12">
+                                            <div class="cus-padding-top col-sm-12">
                                                 <button class="btn btn-danger btn-lg btn-block" type="button">
                                                     <i class="fa fa-google" aria-hidden="true"></i>
                                                     Google

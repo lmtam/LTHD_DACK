@@ -121,3 +121,16 @@ function btnRegister() {
 function btnBuyShoe() {
     window.location.href = "detail.html";
 }
+
+//---------------//
+
+
+
+
+
+
+
+
+
+
+
