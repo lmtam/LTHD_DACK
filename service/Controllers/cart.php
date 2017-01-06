@@ -10,7 +10,7 @@
         }
         public function getCartByUserId($user_id)
         {
-            if(Helper::isValuable($user_id))
+            if(Helper_Controller::isValuable($user_id))
             {
                 return $this->model->getCartByUserId($user_id);
             }
@@ -18,7 +18,7 @@
         }
         public function addOneProductToCart($data)
         {
-            if(Helper::isValuable($data["product_detail_id"]) && Helper::isValuable($data["user_id"]))
+            if(Helper_Controler::isValuable($data["product_detail_id"]) && Helper_Controller::isValuable($data["user_id"]))
             {
                 return $this->model->addOneProductToCart($data);
             }
@@ -29,7 +29,7 @@
         }
         public function deleteOrder($data)
         {
-            if(Helper::isValuable($data["user_id"]) && Helper::isValuable($data["product_id"]))
+            if(Helper_Controller::isValuable($data["user_id"]) && Helper_Controller::isValuable($data["product_id"]))
             {
                 return $this->model->deleteOrder($data);
             }

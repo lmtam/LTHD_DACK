@@ -1,5 +1,5 @@
 <?php
-	class Helper
+	class Helper_Controller
 	{
 		public static function isValuable($data)
 		{
@@ -27,7 +27,7 @@
 		}
 		public static function Check_phone_string($phone)
 		{
-			if(preg_match("/^[0-9]+$/", $phone) && (strlen($phone)==10 || strlen($phone==11))
+			if(preg_match("/^[0-9]+$/", $phone) && (strlen($phone)==10 || strlen($phone==11)))
 			{
 				return 1;
 			}

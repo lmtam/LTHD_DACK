@@ -15,7 +15,7 @@
         }
         public function getProductById($product_id)
         {
-            if(Helper::isValuable($product_id))
+            if(Helper_Controler::isValuable($product_id))
             {
                 return $this->model->getProductById($product_id);
             }
@@ -23,9 +23,9 @@
         }
         public function addProduct($data)
         {
-            if(Helper::isValuable($data["name"]) && Helper::isValuable($data["description"]) && Helper::isValuable($data["type"]) && Helper::isValuable($data["price"]) && Helper::isValuable($data["image_name"]) && Helper::isValuable($data["count"]))
+            if(Helper_Controlerr::isValuable($data["name"]) && Helper_Controler::isValuable($data["description"]) && Helper_Controler::isValuable($data["type"]) && Helper_Controler::isValuable($data["price"]) && Helper_Controler::isValuable($data["image_name"]) && Helper_Controler::isValuable($data["count"]))
             {
-                if(Helper::Check_number_string($data["price"]) && Helper::Check_number_string($data["count"]))
+                if(Helper_Controler::Check_number_string($data["price"]) && Helper_Controler::Check_number_string($data["count"]))
                 {
                     return $this->model->addProduct($data);
                 }
@@ -35,7 +35,7 @@
         }
         public function deleteProduct($product_id)
         {
-            if(Helper::isValuable($product_id))
+            if(Helper_Controler::isValuable($product_id))
             {
                 return $this->model->deleteProduct($product_id);
             }

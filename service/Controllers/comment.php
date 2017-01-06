@@ -10,7 +10,7 @@
 		}
 		public function getCommentsByProductID($product_id)
 		{
-			if(Helper::isValuable($product_id))
+			if(Helper_Controler::isValuable($product_id))
 			{
 				return $this->model->getCommentsByProductID($product_id);
 			}
@@ -21,7 +21,7 @@
 		}
 		public function addComment($data)
 		{
-			if(Helper::isValuable($data["product_detail_id"]) && Helper::isValuable($data["user_id"]) && Helper::isValuable($data["content"]))
+			if(Helper_Controler::isValuable($data["product_detail_id"]) && Helper_Controler::isValuable($data["user_id"]) && Helper_Controler::isValuable($data["content"]))
 			{
 				return $this->model->addComment($data);
 			}

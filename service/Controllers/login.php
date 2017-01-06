@@ -10,11 +10,11 @@
 		}
 		public function Login($data)
 		{
-			if(Helper::isValuable($data["username"]) && Helper::isValuable($data["password"]))
+			if(Helper_Controler::isValuable($data["username"]) && Helper_Controler::isValuable($data["password"]))
 			{	
-				if(Helper::Check_string_length($data["username"]) && Helper::Check_string_length($data["password"]))
+				if(Helper_Controler::Check_string_length($data["username"]) && Helper_Controler::Check_string_length($data["password"]))
 				{
-					if(Helper::Check_string($data["username"]) && Helper::Check_string($data["password"]))
+					if(Helper_Controler::Check_string($data["username"]) && Helper_Controler::Check_string($data["password"]))
 					{
 						return $this->model->Login($data);
 					}

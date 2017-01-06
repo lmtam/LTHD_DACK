@@ -14,7 +14,7 @@
         }
         public function getOrderById($order_id)
         {
-            if(Helper::isValuable($order_id))
+            if(Helper_Controler::isValuable($order_id))
             {
                 return $this->model->getOrderById($order_id);
             }
@@ -22,9 +22,9 @@
         }
         public function addOrder($data)
         {
-            if(Helper::isValuable($data["user_id"]) && Helper::isValuable($data["total_money"]) && Helper::isValuable($data["name"]) && Helper::isValuable($data["address"]) && Helper::isValuable($data["phone"]) && Helper::isValuable($data["email"]))
+            if(Helper_Controler::isValuable($data["user_id"]) && Helper_Controler::isValuable($data["total_money"]) && Helper_Controler::isValuable($data["name"]) && Helper_Controler::isValuable($data["address"]) && Helper_Controler::isValuable($data["phone"]) && Helper_Controler::isValuable($data["email"]))
             {
-                if(Helper::Check_number_string($data["total_money"]) && Helper::Check_phone_string($data["phone"]) && Helper::Check_email_string($data["email"]))
+                if(Helper_Controler::Check_number_string($data["total_money"]) && Helper_Controler::Check_phone_string($data["phone"]) && Helper_Controler::Check_email_string($data["email"]))
                 {
                     return $this->model->addOrder($data);
                 }
@@ -34,7 +34,7 @@
         }
         public function deleteOrder($order_id)
         {
-            if(Helper::isValuable($order_id))
+            if(Helper_Controler::isValuable($order_id))
             {
                 return $this->model->deleteOrder($order_id);
             }
