@@ -17,7 +17,7 @@
         {
             if(Helper_Controller::isValuable($product_id))
             {
-                return $this->model->getProductById($product_id);
+                return ($this->model->getProductById($product_id));
             }
             return "Lỗi dữ liệu Null hoặc không hợp lệ";
         }

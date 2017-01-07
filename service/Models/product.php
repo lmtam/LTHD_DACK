@@ -16,9 +16,7 @@ class Product{
             $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);
-            echo "<pre>";
-            print_r($list);
-            die();
+
             return $list;
         }
         catch (Exception $e){
@@ -34,6 +32,10 @@ class Product{
             $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);
+//            $result = [0=> ['product_name'=>'','product_detail_id'=>'','product_name'=>'','type'=>'',]];
+
+//            echo json_encode($list);
+//            die();
             return $list;
         }
         catch (Exception $e){

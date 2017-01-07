@@ -12,16 +12,13 @@ class Cart{
     function getCartByUserId($user_id){
 
         try{
-            $sql = "SELECT DISTINCT P.product_name,PD.product_detail_id,P.description,PD.size,PD.color FROM carts C JOIN product_detail PD on C.product_detail_id = PD.product_detail_id JOIN products P on P.product_id = PD.product_id WHERE user_id=:user_id";
+            $sql = "SELECT  P.product_name,PD.product_detail_id,P.description,PD.size,PD.color FROM carts C JOIN product_detail PD on C.product_detail_id = PD.product_detail_id JOIN products P on P.product_id = PD.product_id WHERE user_id=:user_id";
 //            $sql = "SELECT * FROM carts";
             $temp = $this->con->prepare($sql);
             $temp->bindParam('user_id',$user_id,PDO::PARAM_STR);
             $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);
-            echo "<pre>";
-            var_dump($list);
-            die();
 
             return $list;
         }

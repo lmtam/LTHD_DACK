@@ -23,11 +23,11 @@ function getCartProductByUserId() {
     });
 }
 function addOrder() {
-    // var name = $('#name').val();
-    // var adress = $('#address').val();
-    // var email = $('#email').val();
-    // var phone = $('#phone').val();
-    // var order_detail = new Array();
+    var name = $('#name').val();
+    var adress = $('#address').val();
+    var email = $('#email').val();
+    var phone = $('#phone').val();
+    var order_detail = new Array();
 
     $.ajax({
         type: "GET",

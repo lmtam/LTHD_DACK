@@ -24,16 +24,17 @@
             <div class="col-sm-3">
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                     <div class="fileinput-new thumbnail" style="height: 128px">
-                        <img src="images/hoamai.jpg" alt="" />
+                        <img id="imgDaidien" src="images/hoamai.jpg" alt="" />
                     </div>
                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-height: 128px; max-width: 100%;line-height: 10px">
                     </div>
-                    <div id="divSelectFile" class="Status_Save">
+                    <div id="divSelectFile" class="Status_Save browse-image " data-target="image_name">
                         <span class="btn btn-default btn-file">
-                            <span class="fileinput-new"> Chọn hình </span>
+                            <span class="fileinput-new " > Chọn hình </span>
                             <span class="fileinput-exists"> Thay đổi </span>
                             <input type="hidden" value="" name=""/>
-                            <input id="uploader" type="file" name="iUpload" accept="image/*"/>
+                            <input id="uploader" type="button" name="iUpload" accept="image/*"/>
+                            <input type="hidden" id="image_name">
                         </span>
                         <a class="btn btn-danger fileinput-exists" data-dismiss="fileinput" > Xóa hình </a>
                     </div>
@@ -101,5 +102,6 @@
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="plugins/file-input/bootstrap-fileinput.js"></script>
     <script src="js/admin.js"></script>
+    <script src="plugins/ckfinder/ckfinder.js"></script>
 </body>
 </html>

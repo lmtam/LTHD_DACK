@@ -61,3 +61,37 @@ function addProduct() {
         }
     });
 }
+
+
+function BrowseServer(name) {
+//            console.log(name);
+    var config = {};
+    config.startupPath = 'Images:/upload/images/';
+    var finder = new CKFinder(config);
+//    finder.basePath = '../';
+    finder.selectActionFunction = SetFileField;
+    finder.selectActionData = name;
+    finder.callback = function (api) {
+        api.disableFolderContextMenuOption('Batch', true);
+    };
+    finder.popup();
+}
+function SetFileField(fileUrl, data) {
+    var file = fileUrl.replace(/\/\//g, '/');
+    $('#image_name').val(file);
+    var name =$('#image_name').val();
+    console.log(name);
+    var filename = 'http://localhost/DACK/client'+ file;
+    $('#imgDaidien').attr('src',filename);
+        //            console.log(file);
+//     $('#' + data["selectActionData"]).val(file);
+//     $('#' + data["selectActionData"]).parent().find('.preview-file-upload').attr('src', file);
+}
+var browseImage = function () {
+    $('.browse-image').click(function () {
+        var name = $(this).attr('data-target');
+        //openKCFinder();
+        BrowseServer(name);
+    });
+};
+browseImage();
