@@ -107,16 +107,6 @@ $(function () {
 
 });
 
-//nhap dang nhap
-function btnLogin() {
-    $('.nav li a[href="#formlogin"]').tab('show');
-}
-
-//nhap dang ki
-function btnRegister() {
-    $('.nav li a[href="#formregister"]').tab('show');
-}
-
 //mua giay
 function btnBuyShoe() {
     window.location.href = "detail.html";
