@@ -1,12 +1,12 @@
 <?php
 	require_once("Libraries/SlimFramework/vendor/autoload.php");
 	require_once("Controllers/cart.php");
-	require_once("Controllers/cart.php");
-	require_once("Controllers/cart.php");
-	require_once("Controllers/cart.php");
-	require_once("Controllers/cart.php");
-	require_once("Controllers/cart.php");
-	require_once("Controllers/cart.php");
+	require_once("Controllers/login.php");
+	require_once("Controllers/logout.php");
+	require_once("Controllers/order.php");
+	require_once("Controllers/register.php");
+	require_once("Controllers/product.php");
+	require_once("Controllers/comment.php");
 	$app=new \Slim\App();
 
 	
@@ -26,18 +26,18 @@
 		$con=new Logout_Controller();
 		echo $con->Logout();
 	});
-	$app->get("/carts/get/{id}",function($request,$response,$args)
+	$app->get("/carts/get",function($request,$response,$args)
 	{
-		$id=$args["id"];
+		$user_id=1;
 		$con=new Cart_Controller();
-		echo $con->getCartByUserId($id);
+		echo json_encode($con->getCartByUserId($user_id));
 	});
 	$app->post("/carts/add",function($request,$response,$args)
 	{
 		$input=$request->getParsedBody();
 		$data= array(
 			"product_detail_id"=>$input["product_detail_id"],
-			"user_id"=>$input["user_id"]
+			"user_id"=>'1'
 			); 
 		$con=new Cart_Controller();
 		echo $con->addOneProductToCart($data);
@@ -66,6 +66,7 @@
 			"user_id"=>$input["user_id"],
 			"content"=>$input["content"]
 			);
+
 		$con=new Comment_Controller();
 		echo $con->addComment($data);
 	});
@@ -89,9 +90,10 @@
 			"name"=>$input["name"],
 			"address"=>$input["address"],
 			"phone"=>$input["phone"],
-			"email"=>$input["email"]
+			"email"=>$input["email"],
+            "order_detail"=>$input["order_detail"]
 			);
-		$con-new Order_Controller();
+		$con=new Order_Controller();
 		echo $con->addOrder($data);
 	});
 	$app->get("/orders/delete/{id}",function($request,$response,$args)
@@ -103,13 +105,14 @@
 	$app->get("/products/get",function($request,$response,$args)
 	{
 		$con=new Product_Controller();
-		echo $con->getAllProduct();
+		echo json_encode($con->getAllProduct());
 	});
 	$app->get("/products/get/{id}",function($request,$response,$args)
 	{
 		$id=$args["id"];
+
 		$con=new Product_Controller();
-		echo $con->getProductById($id);
+		echo json_encode($con->getProductById($id));
 	});
 	$app->post("/products/add",function($request,$response,$args)
 	{
@@ -120,8 +123,10 @@
 			"type"=>$input["type"],
 			"price"=>$input["price"],
 			"image_name"=>$input["image_name"],
-			"count"=>$input["count"]
+			"count"=>$input["count"],
+            "product_detail" => $input["product_detail"]
 			);
+
 		$con=new Product_Controller();
 		echo $con->addProduct($data);
 

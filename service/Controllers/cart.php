@@ -18,14 +18,21 @@
         }
         public function addOneProductToCart($data)
         {
-            if(Helper_Controler::isValuable($data["product_detail_id"]) && Helper_Controller::isValuable($data["user_id"]))
+//            die('1234');
+            $product_detail_id =$data["product_detail_id"];
+            $user_id = $data["user_id"];
+//            echo $product_detail_id;
+//            die();
+            if(Helper_Controller::isValuable($product_detail_id) && Helper_Controller::isValuable($user_id))
             {
+
                 return $this->model->addOneProductToCart($data);
             }
             else
             {
                 return "Lỗi dữ liệu Null hoặc không hợp lệ";
             }
+//            $this->model->addOneProductToCart($data);
         }
         public function deleteOrder($data)
         {

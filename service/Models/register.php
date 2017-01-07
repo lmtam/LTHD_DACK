@@ -21,7 +21,7 @@
 			{
 				// chưa hoàn thành
 				$sql="INSERT INTO users(user_name,password,created_day,admin) VALUES(:username,:password,:created_day,:admin)";
-				$temp=$this->con->prepare($sq;);
+				$temp=$this->con->prepare($sql);
 				$temp->bindParam("username",$username);
 				$temp->bindParam("password",$password);
 				$temp->bindParam("created_day",$created_day);

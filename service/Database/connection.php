@@ -15,6 +15,7 @@ class DBConnection
 		catch(Exception $e)
 		{
 			return "Caught Exception : ".$e->getMessage();
+//            return "Loi ket noi";
 		}
 	}
 }

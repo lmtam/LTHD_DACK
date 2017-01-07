@@ -10,34 +10,42 @@ class Cart{
     }
 
     function getCartByUserId($user_id){
-        try{
-            $sql = "SELECT * FROM carts WHERE user_id=:user_id";
 
-            $temp=$this->con->prepare($sql);
-            $temp->bindParam('user_id',$user_id);
-            $temp->excute();
+        try{
+            $sql = "SELECT DISTINCT P.product_name,PD.product_detail_id,P.description,PD.size,PD.color FROM carts C JOIN product_detail PD on C.product_detail_id = PD.product_detail_id JOIN products P on P.product_id = PD.product_id WHERE user_id=:user_id";
+//            $sql = "SELECT * FROM carts";
+            $temp = $this->con->prepare($sql);
+            $temp->bindParam('user_id',$user_id,PDO::PARAM_STR);
+            $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);
+            echo "<pre>";
+            var_dump($list);
+            die();
+
             return $list;
         }
         catch (Exception $e){
+
             return $e->getMessage();
         }
     }
     function  addOneProductToCart($data){
+
         $product_detail_id = $data['product_detail_id'];
         $user_id = $data['user_id'];
+
         try
         {
             $select = 'SELECT * FROM carts WHERE user_id=:user_id AND product_detail_id=:product_detail_id';
             $temp=$this->con->prepare($select);
-            $temp->bindParam('user_id',$user_id);
-            $temp->bindParam('product_id',$product_id);
-            $temp->excute();
+            $temp->bindParam('user_id',$user_id,PDO::PARAM_STR);
+            $temp->bindParam('product_detail_id',$product_detail_id,PDO::PARAM_STR);
+            $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
 
-           
-            if(!isset($list)){
+
+            if(count($list) == 0){
                 try
                 {
                     $sql = "INSERT INTO carts (product_detail_id,count,user_id)". "VALUES ( '$product_detail_id','1','$user_id')";
@@ -56,10 +64,14 @@ class Cart{
                 //cần chỉnh sửa param của count
                 try
                 {
-                    $sql = "UPDATE carts SET count=count +1 WHERE user_id=:user_id AND product_detail_id=:product_detail_id";
+                    $numcount = $list['0']['count'] + 1;
+
+                    $sql = "UPDATE carts SET count=:numcount WHERE user_id=:user_id AND product_detail_id=:product_detail_id";
                     $temp1 = $this->con->prepare($sql);
-                    $temp1->bindParam('user_id',$user_id);
-                    $temp1->bindParam('product_id',$product_id);
+                    $temp1->bindParam('numcount',$numcount,PDO::PARAM_INT);
+                    $temp1->bindParam('user_id',$user_id,PDO::PARAM_STR);
+                    $temp1->bindParam('product_detail_id',$product_detail_id,PDO::PARAM_STR);
+
                     $temp1->execute();
                     Helper::Disconnection($this->con);
                     return 1;
@@ -87,7 +99,7 @@ class Cart{
             $temp=$this->con->prepare($sql);
             $temp->bindParam('user_id',$user_id);
             $temp->bindParam('product_id',$product_id);
-            $temp->excute();
+            $temp->execute();
             return "Xóa thành công";
         }
         catch (Exception $e){

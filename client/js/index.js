@@ -1,6 +1,9 @@
 
 //load du lieu san khi load trang
 $(document).ready(function () {
+
+
+
     var strShoe = '' +
         '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe()">' +
         '<img src="images/4.jpg" class="img-responsive center-block img-shoe"/>' +
@@ -10,6 +13,7 @@ $(document).ready(function () {
     for(var i=0; i<10; i++){
         $("#main-right").append(strShoe);
     }
+
 });
 
 //bam vao giay nam
@@ -107,20 +111,31 @@ $(function () {
 
 });
 
+//nhap dang nhap
+function btnLogin() {
+    $('.nav li a[href="#formlogin"]').tab('show');
+}
+
+//nhap dang ki
+function btnRegister() {
+    $('.nav li a[href="#formregister"]').tab('show');
+}
+
 //mua giay
 function btnBuyShoe() {
     window.location.href = "detail.html";
 }
 
-//---------------//
+function getAllProduct() {
+    $.ajax({
+        type: "GET",
+        url: '../service/products/get',
+        dataType: 'json',
+        data: '',
+        success: function (respones) {
 
 
-
-
-
-
-
-
-
-
+        }
+    });
+}
 
