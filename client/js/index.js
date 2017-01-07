@@ -139,3 +139,41 @@ function getAllProduct() {
     });
 }
 
+function login() {
+    var username = 'tamle';
+    var password = '123456';
+    $.ajax({
+        type: "POST",
+        url: '../service/login',
+        dataType: 'json',
+        data: {
+            username:username,
+            password:password
+        },
+        success: function (respones) {
+
+
+        }
+    });
+}
+function register() {
+    var name = '';
+    var username = 'tamle';
+    var password = '123456';
+    var confirmpassword = '';
+    var ngaysinh = '';
+    $.ajax({
+        type: "POST",
+        url: '../service/register',
+        dataType: 'json',
+        data: {
+            username:username,
+            password:password,
+
+        },
+        success: function (respones) {
+
+
+        }
+    });
+}

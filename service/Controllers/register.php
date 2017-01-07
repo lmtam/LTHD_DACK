@@ -10,11 +10,11 @@
 		}
 		public function Register($data)
 		{
-			if(Helper_Controler::isValuable($data["username"]) && Helper_Controler::isValuable($data["password"]))
+			if(Helper_Controller::isValuable($data["username"]) && Helper_Controller::isValuable($data["password"]))
 			{	
-				if(Helper_Controler::Check_string_length($data["username"]) && Helper_Controler::Check_string_length($data["password"]))
+				if(Helper_Controller::Check_string_length($data["username"]) && Helper_Controller::Check_string_length($data["password"]))
 				{
-					if(Helper_Controler::Check_string($data["username"]) && Helper_Controler::Check_string($data["password"]))
+					if(Helper_Controller::Check_string($data["username"]) && Helper_Controller::Check_string($data["password"]))
 					{
 						return $this->model->Register($data);
 					}

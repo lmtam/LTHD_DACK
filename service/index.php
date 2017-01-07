@@ -19,7 +19,8 @@
 			"username"=>$input["username"],
 			"password"=>$input["password"]
 		);
-		echo $con->Login($data);
+
+		echo json_encode($con->Login($data));
 	});
 	$app->get("/logout",function($request,$response,$args)
 	{
@@ -42,12 +43,13 @@
 		$con=new Cart_Controller();
 		echo $con->addOneProductToCart($data);
 	});
-	$app->get("/carts/delete/{user_id}/{product_id}",function($request,$response,$args)
+	$app->get("/carts/delete/{product_detail_id}",function($request,$response,$args)
 	{
-		$input=$request->getParsedBody();
+        $product_detail_id=$args["id"];
+        die('123');
 		$data=array(
-			"user_id"=>$input["user_id"],
-			"product_id"=>$input["product_id"]
+			"user_id"=>'1',
+			"product_detail_id"=>$product_detail_id
 			);
 		$con=new Cart_Controller();
 		echo $con->deleteOrder($data);
@@ -85,7 +87,7 @@
 	{
 		$input=$request->getParsedBody();
 		$data=array(
-			"user_id"=>$input["user_id"],
+			"user_id"=>1,
 			"total_money"=>$input["total_money"],
 			"name"=>$input["name"],
 			"address"=>$input["address"],
@@ -144,6 +146,7 @@
 			"username"=>$input["username"],
 			"password"=>$input["password"]
 			);
+
 		$con=new Register_Controller();
 		echo $con->Register($data);
 	});

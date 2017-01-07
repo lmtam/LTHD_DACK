@@ -50,7 +50,7 @@ class Order{
      */
     function  addOrder($data){
         $orderId=null;
-        $created_day    = new Date('Y-m-d H:i:s');
+        $created_day    = Date('Y-m-d H:i:s');
         $user_id        = $data['user_id'];
         $total_money    = $data['total_money'];
         $name           = $data['name'];
@@ -91,7 +91,7 @@ class Order{
 
         $listOrderDetail = $data['order_detail'];
         foreach ($listOrderDetail as $item){
-            $product_detail_id = $item['product_detail_id'];
+            $product_detail_id = $item[0];
             try
             {
                 $sqlProductDetail = "INSERT INTO order_detail (product_detail_id)"."VALUES ('$product_detail_id')";

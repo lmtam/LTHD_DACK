@@ -17,18 +17,19 @@
 		{
 			$username=$array["username"];
 			$password=$array["password"];
-			
+
 			try
 			{
 				$sql="SELECT admin FROM users WHERE user_name=:username AND password=:password";
 				$temp=$this->con->prepare($sql);
-				$temp->bindParam('username',$username);
-				$temp->bindParam('password',$password);
-				$temp->excute();
+				$temp->bindParam('username',$username,PDO::PARAM_STR);
+				$temp->bindParam('password',$password,PDO::PARAM_STR);
+				$temp->execute();
+
 				if($temp->rowCount())
 				{
 					$list=$temp->fetchAll(PDO::FETCH_BOTH);
-					$admin=$list["admin"];
+					$admin=$list[0]["admin"];
 					if($admin=="Y")
 					{
 						$_SESSION["login"]=1;

@@ -14,18 +14,15 @@
 			$username=$array["username"];
 			$password=$array["password"];
 			$admin="N";
-			$created_day=new Date('Y-m-d H:i:s');
+			$created_day= Date('Y-m-d H:i:s');
 
 			
 			try
 			{
 				// chưa hoàn thành
-				$sql="INSERT INTO users(user_name,password,created_day,admin) VALUES(:username,:password,:created_day,:admin)";
+				$sql="INSERT INTO users(user_name,password,created_day,admin) VALUES('$username','$password','$created_day','$admin')";
 				$temp=$this->con->prepare($sql);
-				$temp->bindParam("username",$username);
-				$temp->bindParam("password",$password);
-				$temp->bindParam("created_day",$created_day);
-				$temp->bindParam("admin",$admin);
+                $temp->execute();
 				Helper::Disconnection($this->con);
 				return "Đăng kí thành công";
 

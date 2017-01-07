@@ -28,6 +28,7 @@ function addOrder() {
     var email = $('#email').val();
     var phone = $('#phone').val();
     var order_detail = new Array();
+    var totalPrice = 0;
 
     $.ajax({
         type: "GET",
@@ -35,27 +36,32 @@ function addOrder() {
         dataType: 'json',
         data: '',
         success: function (respones) {
-            console.log(respones);
+            // console.log(respones);
+            for(var i=0; i< respones.length; i++){
+                order_detail.push(respones[i].product_detail_id);
+                totalPrice += parseInt(respones[i].count) * parseInt(respones[i].price);
 
+
+            }
         }
     });
 
-    //console.log(order_detail);
-    // $.ajax({
-    //     type: "POST",
-    //     url: '../service/orders/add',
-    //     dataType: 'json',
-    //     data: {
-    //         name:name,
-    //         address:address,
-    //         email:email,
-    //         phone:phone,
-    //         order_detail:order_detail
-    //     },
-    //     success: function (respones) {
-    //
-    //
-    //     }
-    // });
+    console.log(totalPrice);
 
+    $.ajax({
+        type: "POST",
+        url: '../service/orders/add',
+        dataType: 'json',
+        data: {
+            name:name,
+            address:address,
+            email:email,
+            phone:phone,
+            total_money:totalPrice,
+            order_detail:order_detail
+        },
+        success: function (respones) {
+
+        }
+    });
 }
