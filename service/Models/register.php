@@ -1,7 +1,6 @@
 <?php
 	require_once("Database/connection.php");
 	require_once(dirname(__FILE__).'/helper.php');
-	require_once(dirname(__FILE__).'/token.php');
 	class Register
 	{
 		private $con;
@@ -25,8 +24,6 @@
 				$temp=$this->con->prepare($sql);
                 $temp->execute();
 				Helper::Disconnection($this->con);
-				$token=Token::createToken($array);
-				setcookie($username,$token,time()+(86400*30),"/");
 				return "Đăng kí thành công";
 
 			}

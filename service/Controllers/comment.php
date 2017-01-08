@@ -25,7 +25,7 @@
 		{
 //		    die('1234');
 //            return $this->model->addComment($data);
-			if(Helper_Controller::isValuable($data["product_detail_id"]) && Helper_Controller::isValuable($data["user_id"]) && Helper_Controller::isValuable($data["content"]))
+			if(Helper_Controller::isValuable($data["product_id"]) && Helper_Controller::isValuable($data["user_id"]) && Helper_Controller::isValuable($data["content"]))
 			{
 				return $this->model->addComment($data);
 			}

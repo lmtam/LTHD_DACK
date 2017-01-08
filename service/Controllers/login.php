@@ -26,23 +26,5 @@
 			}
 			return "Tên đăng nhập hoặc mật khẩu rỗng";
 		}
-		public function compareUser($data)
-		{
-			if(Helper_Controller::isValuable($data["username"]) && Helper_Controller::isValuable($data["password"]))
-			{	
-				if(Helper_Controller::Check_string_length($data["username"]) && Helper_Controller::Check_string_length($data["password"]))
-				{
-					if(Helper_Controller::Check_string($data["username"]) && Helper_Controller::Check_string($data["password"]))
-					{
-
-						return $this->model->compareUser($data);
-					}
-					return 0;
-				}
-				return 0;
-
-			}
-			
-		}
 	}
 ?>

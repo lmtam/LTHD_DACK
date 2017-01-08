@@ -12,7 +12,7 @@ class Cart{
     function getCartByUserId($user_id){
 
         try{
-            $sql = "SELECT  P.product_name,PD.product_detail_id,P.description,PD.size,PD.color,P.price,C.count FROM carts C JOIN product_detail PD on C.product_detail_id = PD.product_detail_id JOIN products P on P.product_id = PD.product_id WHERE user_id=:user_id";
+            $sql = "SELECT  P.product_name,PD.product_detail_id,P.description,PD.size,PD.color,P.price,C.count,P.image_name FROM carts C JOIN product_detail PD on C.product_detail_id = PD.product_detail_id JOIN products P on P.product_id = PD.product_id WHERE user_id=:user_id";
 //            $sql = "SELECT * FROM carts";
             $temp = $this->con->prepare($sql);
             $temp->bindParam('user_id',$user_id,PDO::PARAM_STR);
@@ -87,15 +87,15 @@ class Cart{
        
     }
 
-    function deleteOrder($data){
+    function deleteCarts($data){
         $user_id=$data["user_id"];
-        $product_id=$data["product_id"];
+        $product_detail_id=$data["product_detail_id"];
         try{
-            $sql = "DELETE  FROM carts WHERE user_id=:user_id AND product_id=:product_id ";
+            $sql = "DELETE  FROM carts WHERE user_id=:user_id AND product_detail_id=:product_detail_id ";
 
             $temp=$this->con->prepare($sql);
-            $temp->bindParam('user_id',$user_id);
-            $temp->bindParam('product_id',$product_id);
+            $temp->bindParam('user_id',$user_id,PDO::PARAM_INT);
+            $temp->bindParam('product_detail_id',$product_detail_id,PDO::PARAM_INT);
             $temp->execute();
             return "Xóa thành công";
         }

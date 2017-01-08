@@ -21,6 +21,15 @@
             }
             return "Lỗi dữ liệu Null hoặc không hợp lệ";
         }
+        public function getProductByName($product_name)
+        {
+            if(Helper_Controller::isValuable($product_name))
+            {
+                return ($this->model->getProductByName($product_name));
+            }
+            return "Lỗi dữ liệu Null hoặc không hợp lệ";
+        }
+
         public function addProduct($data)
         {
             if(Helper_Controller::isValuable($data["name"]) && Helper_Controller::isValuable($data["description"]) && Helper_Controller::isValuable($data["type"]) && Helper_Controller::isValuable($data["price"]) && Helper_Controller::isValuable($data["image_name"]) && Helper_Controller::isValuable($data["count"]))

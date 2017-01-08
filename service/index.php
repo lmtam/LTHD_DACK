@@ -8,7 +8,6 @@
 	require_once("Controllers/register.php");
 	require_once("Controllers/product.php");
 	require_once("Controllers/comment.php");
-	require_once("Controllers/token.php");
 	$app=new \Slim\App();
 
 	
@@ -31,131 +30,63 @@
 	});
 	$app->get("/carts/get",function($request,$response,$args)
 	{
-
-		if($_SESSION["login"]==1)
-		{
-			$user_id=1;
-			$con=new Cart_Controller();
-			echo json_encode($con->getCartByUserId($user_id));
-		}
-		else
-		{
-			echo "Phải đăng nhập";
-		}
-		
+		$user_id=1;
+		$con=new Cart_Controller();
+		echo json_encode($con->getCartByUserId($user_id));
 	});
-	$app->post("/carts/add",function($request,$response,$args)//sửa lại
+	$app->post("/carts/add",function($request,$response,$args)
 	{
-		$header=$request->getHeaderLine("Authorization");
-		$arr=Token_Controller::verifyJWT($header);
-		$login=new Login_Controller();
-		
-		if($_SESSION["login"]==1 && $_SESSION["admin"]==1 && $login->compareUser($arr))
-		{
-			$input=$request->getParsedBody();
-			$data= array(
+		$input=$request->getParsedBody();
+		$data= array(
 			"product_detail_id"=>$input["product_detail_id"],
 			"user_id"=>'1'
 			); 
-			$con=new Cart_Controller();
-			echo $con->addOneProductToCart($data);
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}
-		
-		
+		$con=new Cart_Controller();
+		echo $con->addOneProductToCart($data);
 	});
 	$app->get("/carts/delete/{product_detail_id}",function($request,$response,$args)
 	{
-		$header=$request->getHeaderLine("Authorization");
-		$arr=Token_Controller::verifyJWT($header);
-		$login=new Login_Controller();
-
-		if($_SESSION["login"]==1 && $_SESSION["admin"]==1 && $login->compareUser($arr))
-		{
-			$product_detail_id=$args["id"];
-      	
-			$data=array(
+        $product_detail_id=$args["product_detail_id"];
+		$data=array(
 			"user_id"=>'1',
 			"product_detail_id"=>$product_detail_id
 			);
-			$con=new Cart_Controller();
-			echo $con->deleteOrder($data);
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}
-  
+		$con=new Cart_Controller();
+		echo json_encode($con->deleteCarts($data));
 	});
-	$app->get("/comments/get/{id}",function($request,$response,$args)
+	$app->get("/comments/get/{product_detail_id}",function($request,$response,$args)
 	{
-		$id=$args["id"];
+		$id=$args["product_detail_id"];
 		$con=new Comment_Controller();
-		echo $con->getCommentsByProductID($id);
+		echo json_encode($con->getCommentsByProductID($id));
 	});
 	$app->post("/comments/add",function($request,$response,$args)
 	{
-		if($_SESSION["login"]==1)
-		{
-			$input=$request->getParsedBody();
-			$data=array(
-			"product_detail_id"=>$input["product_detail_id"],
-			"user_id"=>$input["user_id"],
+		$input=$request->getParsedBody();
+		$data=array(
+			"product_id"=>$input["product_id"],
+			"user_id"=>$_SESSION['user_id'],
 			"content"=>$input["content"]
 			);
 
-			$con=new Comment_Controller();
-			echo $con->addComment($data);
-		}
-		else
-		{
-			echo "Phải đăng nhập";
-		}
-		
+		$con=new Comment_Controller();
+		echo json_encode($con->addComment($data));
 	});
 	$app->get("/orders/get",function($request,$response,$args)
 	{
-		$header=$request->getHeaderLine("Authorization");
-		$arr=Token_Controller::verifyJWT($header);
-		$login=new Login_Controller();
-		if($_SESSION["login"]==1 && $_SESSION["admin"]==1 && $login->compareUser($arr))
-		{
-			$con=new Order_Controller();
-			echo $con->getAllOrder();
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}	
-		
+		$con=new Order_Controller();
+		echo json_encode($con->getAllOrder());
 	});
 	$app->get("/orders/get/{id}",function($request,$response,$args)
 	{
-		$header=$request->getHeaderLine("Authorization");
-		$arr=Token_Controller::verifyJWT($header);
-		$login=new Login_Controller();
-
-		if($_SESSION["login"]==1 && $_SESSION["admin"]==1 && $login->compareUser($arr))
-		{
-			$id=$args["id"];
-			$con=new Order_Controller();
-			echo $con->getOrderById($id);
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}	
-		
+		$id=$args["id"];
+		$con=new Order_Controller();
+		echo json_encode($con->getOrderById($id));
 	});
 	$app->post("/orders/add",function($request,$response,$args)
 	{
-		if($_SESSION["login"]==1)
-		{
-			$input=$request->getParsedBody();
-			$data=array(
+		$input=$request->getParsedBody();
+		$data=array(
 			"user_id"=>'1',
 			"total_money"=>$input["total_money"],
 			"name"=>$input["name"],
@@ -164,33 +95,14 @@
 			"email"=>$input["email"],
 
 			);
-			$con=new Order_Controller();
-			echo $con->addOrder($data);
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}	
-
-		
+		$con=new Order_Controller();
+		echo json_encode($con->addOrder($data));
 	});
 	$app->get("/orders/delete/{id}",function($request,$response,$args)
 	{
-		$header=$request->getHeaderLine("Authorization");
-		$arr=Token_Controller::verifyJWT($header);
-		$login=new Login_Controller();
-
-		if($_SESSION["login"]==1 && $_SESSION["admin"]==1 && $login->compareUser($arr))
-		{
-			$id=$args["id"];
-			$con=new Order_Controller();
-			echo $con->deleteOrder($id);
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}	
-		
+		$id=$args["id"];
+		$con=new Order_Controller();
+		echo $con->deleteOrder($id);
 	});
 	$app->get("/products/get",function($request,$response,$args)
 	{
@@ -204,16 +116,17 @@
 		$con=new Product_Controller();
 		echo json_encode($con->getProductById($id));
 	});
+	$app->get("/products/search/{name}",function($request,$response,$args){
+
+	    $product_name =$args["name"];
+
+        $con=new Product_Controller();
+        echo json_encode($con->getProductByName($product_name));
+    });
 	$app->post("/products/add",function($request,$response,$args)
 	{
-		$header=$request->getHeaderLine("Authorization");
-		$arr=Token_Controller::verifyJWT($header);
-		$login=new Login_Controller();
-
-		if($_SESSION["login"]==1 && $_SESSION["admin"]==1 && $login->compareUser($arr))
-		{
-			$input=$request->getParsedBody();
-			$data=array(
+		$input=$request->getParsedBody();
+		$data=array(
 			"name"=>$input["name"],
 			"description"=>$input["description"],
 			"type"=>$input["type"],
@@ -223,35 +136,15 @@
             "product_detail" => $input["product_detail"]
 			);
 
-			$con=new Product_Controller();
-			echo $con->addProduct($data);
+		$con=new Product_Controller();
+		echo $con->addProduct($data);
 
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}	
-
-		
 	});
 	$app->get("/products/delete/{id}",function($request,$response,$args)
 	{
-		$header=$request->getHeaderLine("Authorization");
-		$arr=Token_Controller::verifyJWT($header);
-		$login=new Login_Controller();
-		if($_SESSION["login"]==1 && $_SESSION["admin"]==1 && $login->compareUser($arr))
-		{
-			$id=$args["id"];
-			$con=new Product_Controller();
-			echo $con->deleteProduct($id);
-
-		}
-		else
-		{
-			echo "Không được phép !!!";
-		}	
-
-		
+		$id=$args["id"];
+		$con=new Product_Controller();
+		echo $con->deleteProduct($id);
 	});
 	$app->post("/register",function($request,$response,$args)
 	{
@@ -267,7 +160,6 @@
 	$app->get("/",function()
 	{
 		echo "<center><h1>Welcome to Shoe Shop !!!</h1></center>";
-
 	});
 
 

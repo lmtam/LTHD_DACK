@@ -34,11 +34,11 @@
             }
 //            $this->model->addOneProductToCart($data);
         }
-        public function deleteOrder($data)
+        public function deleteCarts($data)
         {
-            if(Helper_Controller::isValuable($data["user_id"]) && Helper_Controller::isValuable($data["product_id"]))
+            if(Helper_Controller::isValuable($data["user_id"]) && Helper_Controller::isValuable($data["product_detail_id"]))
             {
-                return $this->model->deleteOrder($data);
+                return $this->model->deleteCarts($data);
             }
             else
             {

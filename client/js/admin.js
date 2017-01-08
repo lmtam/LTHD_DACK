@@ -25,7 +25,7 @@ function addProduct() {
     var price = $('#giasp').val();
     var description = $('#motasp').val();
     var type = $('#loaisp').val();
-    var image_name = $('#uploader').val();
+    var image_name = $('#image_name').val();
     var num = parseInt($('#num').val());
     var product_detail = new Array();
     var total = 0;

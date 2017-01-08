@@ -113,9 +113,9 @@ function btnRegister() {
 }
 
 //mua giay
-function btnBuyShoe($product_id) {
+function btnBuyShoe(product_id) {
     //set product_id vào cookie;
-
+    setCookie('product_id',product_id);
     window.location.href = "detail.html";
 }
 
@@ -143,8 +143,13 @@ function getAllProduct() {
 }
 
 function login() {
-    var username = 'tamle';
-    var password = '123456';
+    var username = $('#txtemail').val();
+    var password = $('#txtpassword');
+    if(username == '' || password == ''){
+        sweetAlert('Bạn phải nhập đầy đủ thông tin','','error');
+        return;
+    }
+
     $.ajax({
         type: "POST",
         url: '../service/login',
@@ -180,3 +185,6 @@ function register() {
         }
     });
 }
+
+
+
