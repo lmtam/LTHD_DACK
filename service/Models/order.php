@@ -1,6 +1,8 @@
 <?php
 require_once("Database/connection.php");
 require_once(dirname(__FILE__)."/helper.php");
+require_once(dirname(__FILE__)."/cart.php");
+
 class Order{
     private $con;
     public function __construct()
@@ -12,7 +14,7 @@ class Order{
         try{
             $sql = "SELECT * FROM orders";
             $temp=$this->con->prepare($sql);
-            $temp->excute();
+            $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);
             return $list;
@@ -27,7 +29,7 @@ class Order{
 
             $temp=$this->con->prepare($sql);
             $temp->bindParam('order_id',$order_id);
-            $temp->excute();
+            $temp->execute();
             $list = $temp->fetchAll(FETCH_BOTH);
             Helper::Disconnection($this->con);
             return $list;
@@ -43,10 +45,6 @@ class Order{
      *      address
      *      phone
      *      email
-     *      order_detail= array(
-     *          0=> product_detail_id
-     *
-     *      )
      */
     function  addOrder($data){
         $orderId=null;
@@ -57,9 +55,16 @@ class Order{
         $address        = $data['address'];
         $phone          = $data['phone'];
         $email          = $data['email'];
+
+        $cartmodel = new Cart();
+        $listCart = $cartmodel->getCartByUserId($user_id);
+        $order_detail = array();
+        foreach ($listCart as $item){
+            array_push($order_detail,$item['product_detail_id']);
+        }
         try
         {
-            $sqlOrder = "INSERT INTO orders (created_day,total_money,user_id,name,address,phone,email)". "VALUES ('$created_day','$user_id','$total_money','$name','$address','$phone','$email')";
+            $sqlOrder = "INSERT INTO orders (created_day,total_money,user_id,name,address,phone,email)". "VALUES ('$created_day','$total_money','$user_id','$name','$address','$phone','$email')";
             $temp = $this->con->prepare($sqlOrder);
             $temp->execute();
             
@@ -71,14 +76,15 @@ class Order{
         
         try
         {
-            $sqlSelect = "SELECT order_id FROM orders WHERE created_day=:created_day AND user_id=:user_id";
+            $sqlSelect = "SELECT * FROM orders WHERE created_day=:created_day AND user_id=:user_id";
             $temp1=$this->con->prepare($sqlSelect);
-            $temp1->bindParam('created_day',$created_day);
-            $temp1->bindParam('user_id',$user_id);
+            $temp1->bindParam('created_day',$created_day,PDO::PARAM_STR);
+            $temp1->bindParam('user_id',$user_id,PDO::PARAM_STR);
             $temp1->execute();
             //lấy product_id từ temp1;
             $list = $temp1->fetchAll(PDO::FETCH_BOTH);
-            $orderId = $list['order_id'];
+
+            $orderId = $list[0]['order_id'];
         }
         catch(Exception $e)
         {
@@ -89,12 +95,13 @@ class Order{
 
         
 
-        $listOrderDetail = $data['order_detail'];
-        foreach ($listOrderDetail as $item){
-            $product_detail_id = $item[0];
+
+        foreach ($order_detail as $item){
+            $product_detail_id = $item;
+
             try
             {
-                $sqlProductDetail = "INSERT INTO order_detail (product_detail_id)"."VALUES ('$product_detail_id')";
+                $sqlProductDetail = "INSERT INTO order_detail (order_id,product_detail_id)"."VALUES ('$orderId','$product_detail_id')";
                 $temp2 = $this->con->prepare($sqlProductDetail);
                 $temp2->execute();
             }

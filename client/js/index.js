@@ -2,17 +2,8 @@
 //load du lieu san khi load trang
 $(document).ready(function () {
 
+    getAllProduct();
 
-
-    var strShoe = '' +
-        '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe()">' +
-        '<img src="images/4.jpg" class="img-responsive center-block img-shoe"/>' +
-        '<div>Giày Tây Nam Da Cột Dây Thời Trang Zapas GT026 (Đen ) + Tặng Ví Nam Thời Trang</div>' +
-        '<div class="price-shoe"><span>400.000</span><span>&nbsp;VND</span></div>' +
-        '</div>'
-    for(var i=0; i<10; i++){
-        $("#main-right").append(strShoe);
-    }
 
 });
 
@@ -122,7 +113,9 @@ function btnRegister() {
 }
 
 //mua giay
-function btnBuyShoe() {
+function btnBuyShoe($product_id) {
+    //set product_id vào cookie;
+
     window.location.href = "detail.html";
 }
 
@@ -134,6 +127,16 @@ function getAllProduct() {
         data: '',
         success: function (respones) {
 
+            for(var i=0; i<respones.length; i++){
+                var strShoe = '' +
+                    '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe('+ respones[i].product_id +')">' +
+                    '<img src="'+ respones[i].image_name+'" class="img-responsive center-block img-shoe"/>' +
+                    '<div>'+ respones[i].product_name+'</div>' +
+                    '<div class="price-shoe"><span>'+ respones[i].price+'</span><span>&nbsp;VND</span></div>' +
+                    '</div>'
+
+                $("#main-right").append(strShoe);
+            }
 
         }
     });

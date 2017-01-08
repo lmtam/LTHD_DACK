@@ -1,4 +1,5 @@
 <?php
+    session_start();
 	require_once("Libraries/SlimFramework/vendor/autoload.php");
 	require_once("Controllers/cart.php");
 	require_once("Controllers/login.php");
@@ -87,13 +88,13 @@
 	{
 		$input=$request->getParsedBody();
 		$data=array(
-			"user_id"=>1,
+			"user_id"=>'1',
 			"total_money"=>$input["total_money"],
 			"name"=>$input["name"],
 			"address"=>$input["address"],
 			"phone"=>$input["phone"],
 			"email"=>$input["email"],
-            "order_detail"=>$input["order_detail"]
+
 			);
 		$con=new Order_Controller();
 		echo $con->addOrder($data);
@@ -154,6 +155,7 @@
 	{
 		echo "<center><h1>Welcome to Shoe Shop !!!</h1></center>";
 	});
+
 
 	$app->run();
 
