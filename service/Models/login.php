@@ -1,8 +1,7 @@
 <?php
-
-	$_SESSION["login"]=0;
 	require_once("Database/connection.php");
 	require_once(dirname(__FILE__)."/helper.php");
+	require_once(dirname(__FILE__)."/token.php");
 	class Login
 	{
 		private $con;
@@ -54,6 +53,33 @@
 				return $e->getMessage();
 			}
 				
+		}
+		public function compareUser($data)
+		{
+			$username=$data["username"];
+			$password=$data["password"];
+			try
+			{
+				$sql="SELECT * FROM users WHERE user_name=:username AND password=:password";
+				$temp=$this->con->prepare($sql);
+				$temp->bindParam("username",$username,PDO::PARAM_STR);
+				$temp->bindParam("password",$password,PDO::PARAM_STR);
+				$temp->execute();
+				if($temp->rowCount())
+				{
+					$list=$temp->fetchAll(PDO::FETCH_BOTH);
+					if($list["admin"]=="Y")
+					{
+						return 1;
+					}
+					return 0;
+				}
+				return 0;
+			}
+			catch(Exception $e)
+			{
+				return $e->getMessage();
+			}
 		}
 	}
 ?>
