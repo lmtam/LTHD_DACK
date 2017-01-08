@@ -38,9 +38,11 @@
                         <ul class="nav navbar-nav navbar-right hidden" id="logged">
                             <li>
                                 <div class="dropdown" href="#">
-                                    <div class="dropdown-toggle user-name"data-toggle="dropdown">
-                                        <span class="fa fa-user"></span> Nguyễn Xuân Chương
-                                        <span class="caret"></span></div>
+                                    <div class="dropdown-toggle user-name"data-toggle="dropdown" style="padding-top: 5px">
+                                        <img src="#" width="50" height="40" id="user-photo"/>
+                                        <span id="user-name"></span>
+                                        <span class="caret"></span>
+                                    </div>
                                     <ul class="dropdown-menu">
                                         <li><a href="profile.html">Trang cá nhân</a></li>
                                         <li><a href="index.html">Đăng xuất</a></li>
@@ -61,6 +63,169 @@
         </div>
     </header>
 
+    <!--dialog dang nhap va dang ki-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#formlogin" >Đăng nhập</a></li>
+                        <li><a data-toggle="tab" href="#formregister" >Đăng kí</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!--dang nhap-->
+                        <div id="formlogin" class="tab-pane fade in active">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-7 m-login">
+                                        <div class="row">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Địa chỉ email *</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Mật khẩu *</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="cus-padding-top">
+                                                <div class="col-sm-4">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <button class="btn btn-warning">Đăng nhập</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-4 m-login">
+                                        <div class="row">
+                                            <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
+                                            <div class="cus-padding-top col-sm-12">
+                                                <button class="btn btn-primary btn-lg btn-block" type="button" onclick="loginfacebook()">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    Facebook
+                                                </button>
+                                            </div>
+                                            <div class="cus-padding-top col-sm-12">
+                                                <button class="btn btn-danger btn-lg btn-block" type="button">
+                                                    <i class="fa fa-google" aria-hidden="true"></i>
+                                                    Google
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--dang ki-->
+                        <div id="formregister" class="tab-pane fade">
+                            <div class="container-fluid">
+                                <div class="row m-login">
+                                    <div class="col-sm-7">
+                                        <div class="row">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Tên *</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row cus-padding-top" >
+                                            <div class="col-sm-4 text-right">
+                                                <label>Địa chỉ email *</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Mật khẩu *</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right">
+                                                <label>Nhập lại mật khẩu*</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4 text-right" style="padding: 0px">
+                                                <label>Ngày tháng năm sinh</label>
+                                            </div>
+                                            <div class="col-sm-2" style="padding-right: 0px">
+                                                <select class="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2" style="padding-right: 0px">
+                                                <select class="form-control">
+                                                    <option>12</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <select class="form-control">
+                                                    <option>1990</option>
+                                                    <option>1991</option>
+                                                    <option>1992</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row cus-padding-top">
+                                            <div class="col-sm-4">
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <button class="btn btn-warning">Đăng kí</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-4">
+                                        <div class="row">
+                                            <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
+                                            <div class="cus-padding-top col-sm-12">
+                                                <button class="btn btn-primary btn-lg btn-block" type="button" onclick="loginfacebook()">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    Facebook
+                                                </button>
+                                            </div>
+                                            <div class="cus-padding-top col-sm-12">
+                                                <button class="btn btn-danger btn-lg btn-block" type="button">
+                                                    <i class="fa fa-google" aria-hidden="true"></i>
+                                                    Google
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <!--trang chinh-->
     <div class="container normal-page backgroup-prolife">
         <div class="row cus-padding-top">

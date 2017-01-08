@@ -23,11 +23,11 @@
                 </div>
                 <div class="input-group pull-right hidden-xs" style="width: 500px; padding-right:10px">
                     <input class="form-control" placeholder="Tìm sản phẩm...." />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -59,12 +59,14 @@
                         <ul class="nav navbar-nav navbar-right hidden" id="logged">
                             <li>
                                 <div class="dropdown" href="#">
-                                    <div class="dropdown-toggle user-name"data-toggle="dropdown">
-                                        <span class="fa fa-user"></span> Nguyễn Xuân Chương
-                                        <span class="caret"></span></div>
+                                    <div class="dropdown-toggle user-name"data-toggle="dropdown" style="padding-top: 5px">
+                                        <img src="#" width="50" height="40" id="user-photo"/>
+                                        <span id="user-name"></span>
+                                        <span class="caret"></span>
+                                    </div>
                                     <ul class="dropdown-menu">
                                         <li><a href="profile.html">Trang cá nhân</a></li>
-                                        <li><a href="index.html">Đăng xuất</a></li>
+                                        <li><a onclick="logoutfacebook()">Đăng xuất</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -103,7 +105,7 @@
                                                 <label>Địa chỉ email *</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" id="txtemail" class="form-control"/>
+                                                <input type="text" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row cus-padding-top">
@@ -111,7 +113,7 @@
                                                 <label>Mật khẩu *</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" id="txtpassword" class="form-control"/>
+                                                <input type="text" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -119,7 +121,7 @@
                                                 <div class="col-sm-4">
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <button class="btn btn-warning" id="btnDangnhap" onclick="login()">Đăng nhập</button>
+                                                    <button class="btn btn-warning">Đăng nhập</button>
                                                 </div>
                                             </div>
 
@@ -130,10 +132,10 @@
                                         <div class="row">
                                             <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
                                             <div class="cus-padding-top col-sm-12">
-                                                 <button class="btn btn-primary btn-lg btn-block" type="button">
-                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
-                                                     Facebook
-                                                 </button>
+                                                <button class="btn btn-primary btn-lg btn-block" type="button" onclick="loginfacebook()">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    Facebook
+                                                </button>
                                             </div>
                                             <div class="cus-padding-top col-sm-12">
                                                 <button class="btn btn-danger btn-lg btn-block" type="button">
@@ -157,7 +159,7 @@
                                                 <label>Tên *</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" id="txtname" class="form-control"/>
+                                                <input type="text" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row cus-padding-top" >
@@ -165,7 +167,7 @@
                                                 <label>Địa chỉ email *</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" id="txtemailRegister" class="form-control"/>
+                                                <input type="text" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row cus-padding-top">
@@ -173,7 +175,7 @@
                                                 <label>Mật khẩu *</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" id="txtpasswordRegister" class="form-control"/>
+                                                <input type="text" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row cus-padding-top">
@@ -181,7 +183,7 @@
                                                 <label>Nhập lại mật khẩu*</label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <input type="text" id="txtConfirmpasswordRegister" class="form-control"/>
+                                                <input type="text" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row cus-padding-top">
@@ -214,7 +216,7 @@
                                             <div class="col-sm-4">
                                             </div>
                                             <div class="col-sm-8">
-                                                <button class="btn btn-warning" onclick="register()">Đăng kí</button>
+                                                <button class="btn btn-warning">Đăng kí</button>
                                             </div>
                                         </div>
                                     </div>
@@ -223,7 +225,7 @@
                                         <div class="row">
                                             <div class="m-text-login col-sm-12">Hoặc đăng nhập với</div>
                                             <div class="cus-padding-top col-sm-12">
-                                                <button class="btn btn-primary btn-lg btn-block" type="button">
+                                                <button class="btn btn-primary btn-lg btn-block" type="button" onclick="loginfacebook()">
                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                                     Facebook
                                                 </button>
