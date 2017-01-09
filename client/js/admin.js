@@ -2,6 +2,14 @@
  * Created by Nguyen on 04-Jan-17.
  */
 
+$(document).ready(function () {
+})
+
+function loginAdmin() {
+    $("#formLoginAdmin").addClass("hidden");
+    $("#formMainAdmin").removeClass("hidden");
+}
+
 function btnThemChiTietSanPham() {
     var num = parseInt($('#num').val())+1 ;
 
@@ -62,7 +70,6 @@ function addProduct() {
     });
 }
 
-
 function BrowseServer(name) {
 //            console.log(name);
     var config = {};
@@ -95,3 +102,13 @@ var browseImage = function () {
     });
 };
 browseImage();
+
+//-------//
+$("table[id$=tblListProduct]").bootstrapTable({
+    classes: 'table table-hover',
+    //data: data
+});
+
+$('table[id$=tblListProduct]').on('click-row.bs.table', function (row, $element, field) {
+    $('[href="#formProduct"]').tab('show');
+});

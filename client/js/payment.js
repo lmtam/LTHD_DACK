@@ -4,6 +4,8 @@
 var order_detail = new Array();
 $(document).ready(function () {
    getCartProductByUserId();
+    $( "#m-header" ).load("menu-bar.html");
+    $( "#myModal" ).load("modal.html");
 });
 
 function btnDatHangThanhCong() {
@@ -11,10 +13,8 @@ function btnDatHangThanhCong() {
     addOrder();
 }
 
-$("table[id$=tblPayment]").bootstrapTable({
-    classes: 'table table-hover',
-    //data: data
-});
+
+
 function getCartProductByUserId() {
 
     var totalPrice = 0;

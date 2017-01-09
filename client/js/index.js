@@ -3,8 +3,7 @@
 $(document).ready(function () {
 
     getAllProduct();
-
-
+    $( "#myModal" ).load("modal.html");
 });
 
 //bam vao giay nam

@@ -1,0 +1,49 @@
+<div id="m-menu-bar">
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">GIÀY ONLINE</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right" id="no-login">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#myModal" onclick="btnLogin()">
+                            <span class="glyphicon glyphicon-user"></span>  Đăng nhập</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#myModal" onclick="btnRegister()">
+                            <span class="glyphicon glyphicon-log-in"></span>  Đăng kí</a>
+                    </li>
+                </ul>
+                <!--sau khi dang nhap-->
+                <ul class="nav navbar-nav navbar-right hidden" id="logged">
+                    <li>
+                        <div class="dropdown" href="#">
+                            <div class="dropdown-toggle user-name"data-toggle="dropdown" style="padding-top: 5px">
+                                <img src="#" width="50" height="40" id="user-photo"/>
+                                <span id="user-name"></span>
+                                <span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.html">Trang cá nhân</a></li>
+                                <li><a href="index.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li >
+                        <a href="#" onclick="Carts()">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

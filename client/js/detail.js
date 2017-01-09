@@ -1,7 +1,11 @@
 /**
  * Created by Nguyen on 03-Jan-17.
  */
+
 $(document).ready(function () {
+    //auto load file
+    $( "#m-header" ).load("menu-bar.html");
+    $( "#myModal" ).load("modal.html");
 
     var product_id = getCookie("product_id");
     getProductById(product_id);

@@ -4,7 +4,8 @@
 $(document).ready(function () {
 
     getCartProduct();
-
+    $( "#m-header" ).load("menu-bar.html");
+    $( "#myModal" ).load("modal.html");
 });
 
 
