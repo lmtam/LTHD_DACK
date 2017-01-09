@@ -47,10 +47,33 @@ class Product{
     }
     function getProductByName($product_name){
         try{
-            $sql = "SELECT * FROM products P JOIN product_detail PD on P.product_id = PD.product_id WHERE P.product_name=:product_name";
 
+            $sql = "SELECT * FROM products  WHERE  product_name=:product_name";
+            
             $temp=$this->con->prepare($sql);
             $temp->bindParam('product_name',$product_name,PDO::PARAM_STR);
+            $temp->execute();
+            $list = $temp->fetchAll(PDO::FETCH_BOTH);
+            Helper::Disconnection($this->con);
+//            $result = [0=> ['product_name'=>'','product_detail_id'=>'','product_name'=>'','type'=>'',]];
+
+//            echo json_encode($list);
+//            die();
+//            echo "<pre>";
+//            print_r($list);
+//            die();
+            return $list;
+        }
+        catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+    function getProductByType($type){
+        try{
+            $sql = "SELECT * FROM products P  WHERE P.type=:type";
+
+            $temp=$this->con->prepare($sql);
+            $temp->bindParam('type',$type,PDO::PARAM_STR);
             $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);

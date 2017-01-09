@@ -29,6 +29,14 @@
             }
             return "Lỗi dữ liệu Null hoặc không hợp lệ";
         }
+        public function getProductByType($type)
+        {
+            if(Helper_Controller::isValuable($type))
+            {
+                return ($this->model->getProductByType($type));
+            }
+            return "Lỗi dữ liệu Null hoặc không hợp lệ";
+        }
 
         public function addProduct($data)
         {

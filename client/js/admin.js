@@ -3,13 +3,57 @@
  */
 
 $(document).ready(function () {
+    $.ajax({
+        type: "GET",
+        url: '../service/products/get',
+        dataType: 'json',
+        data: '',
+        success: function (respones) {
+            $("table[id$=tblListProduct]").bootstrapTable('load', respones);
+
+        }
+    });
 })
 
 function loginAdmin() {
-    $("#formLoginAdmin").addClass("hidden");
-    $("#formMainAdmin").removeClass("hidden");
+    var username = $('#txtemail').val();
+    var password = $('#txtpassword').val();
+    if(username == '' || password == ''){
+        sweetAlert('Bạn phải nhập đầy đủ thông tin','','error');
+        return;
+    }
+    $.ajax({
+        type: "POST",
+        url: '../service/login/admin',
+        dataType: 'json',
+        data: {
+            username:username,
+            password:password
+        },
+        success: function (respones) {
+            console.log(respones);
+            if(respones === 'Error'){
+                sweetAlert('Đăng nhập không thành công','','error');
+            }
+            else{
+                console.log(respones);
+                setCookie('token',respones);
+                $("#formLoginAdmin").addClass("hidden");
+                $("#formMainAdmin").removeClass("hidden");
+
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
+
+
+
 }
 
+//xem chi tiet sp
 function btnThemChiTietSanPham() {
     var num = parseInt($('#num').val())+1 ;
 
@@ -27,7 +71,7 @@ function btnThemChiTietSanPham() {
     $("#divProductDetail").append(strTemp);
 }
 
-
+//hàm them sp
 function addProduct() {
     var name = $('#tensp').val();
     var price = $('#giasp').val();
@@ -49,12 +93,14 @@ function addProduct() {
         total += count;
         // [size]:41
     }
+    var token = getCookie('token');
     // console.log(product_detail);
     $.ajax({
         type: "POST",
         url: '../service/products/add',
         dataType: 'json',
         data: {
+            auth:token,
             name: name,
             description: description,
             type: type,

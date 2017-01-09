@@ -18,11 +18,11 @@
 					{
 						return $this->model->Register($data);
 					}
-					return "Username hoặc Password có kí tự không hợp lệ";
+					return "Error";
 				}
-				return "Username hoặc Password dài quá 15 kí tự";
+				return "Error";
 			}
-			return "Username hoặc Password rỗng";
+			return "Error";
 		}
 	}
 ?>

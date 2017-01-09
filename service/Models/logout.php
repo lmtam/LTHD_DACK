@@ -4,7 +4,8 @@
 		public function Logout()
 		{
 			$_SESSION["login"]=0;
-			return "Đăng xuất thành công";
+			$_SESSION['user_id'] = 0;
+			return "Success";
 		}
 	}
 ?>

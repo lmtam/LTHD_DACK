@@ -2,10 +2,12 @@
  * Created by Nguyen on 04-Jan-17.
  */
 var order_detail = new Array();
+
 $(document).ready(function () {
    getCartProductByUserId();
     $( "#m-header" ).load("menu-bar.html");
     $( "#myModal" ).load("modal.html");
+    getUserById();
 });
 
 function btnDatHangThanhCong() {
@@ -13,7 +15,10 @@ function btnDatHangThanhCong() {
     addOrder();
 }
 
-
+$("table[id$=tblPayment]").bootstrapTable({
+    classes: 'table table-hover',
+    //data: data
+});
 
 function getCartProductByUserId() {
 
@@ -65,3 +70,4 @@ function addOrder() {
     });
 
 }
+

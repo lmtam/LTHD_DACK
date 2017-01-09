@@ -9,8 +9,8 @@ $(document).ready(function () {
 
     var product_id = getCookie("product_id");
     getProductById(product_id);
-    getCommentByProductId(product_id)
-
+    getCommentByProductId(product_id);
+    getUserById();
 });
 function btnThemVaoGioHang(){
     var product_detail_id = $('#product_size :selected').val();
@@ -104,7 +104,7 @@ function addcomment() {
 function getProductById($product_id) {
     $.ajax({
         type: "GET",
-        url: '../service/products/get/'+ $product_id,
+        url: '../service/products/getId/'+ $product_id,
         dataType: 'json',
         data: '',
         success: function (respones) {

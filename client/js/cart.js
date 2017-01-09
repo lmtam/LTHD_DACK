@@ -1,13 +1,10 @@
-/**
- * Created by Nguyen on 03-Jan-17.
- */
-$(document).ready(function () {
 
+$(document).ready(function () {
     getCartProduct();
     $( "#m-header" ).load("menu-bar.html");
     $( "#myModal" ).load("modal.html");
+    getUserById();
 });
-
 
 function getCartProduct() {
     $.ajax({

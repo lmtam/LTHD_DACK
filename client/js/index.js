@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     getAllProduct();
     $( "#myModal" ).load("modal.html");
+    getUserById();
 });
 
 //bam vao giay nam
@@ -12,15 +13,28 @@ function GoShoeMale() {
     $("#main-right-top").removeClass("hidden");
     $("#title-submenu").text("Giày nam");
     $("#main-right").empty();
-    var strShoe = '' +
-        '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe()">' +
-        '<img src="images/5.jpg" class="img-responsive center-block img-shoe"/>' +
-        '<div>Giày Tây Nam Da Cột Dây Thời Trang Zapas GT026 (Đen ) + Tặng Ví Nam Thời Trang</div>' +
-        '<div class="price-shoe"><span>400.000</span><span>&nbsp;VND</span></div>' +
-        '</div>'
-    for(var i=0; i<10; i++){
-        $("#main-right").append(strShoe);
-    }
+
+    $.ajax({
+        type: "GET",
+        url: '../service/products/getType/nam',
+        dataType: 'json',
+        data: '',
+        success: function (respones) {
+
+            $('#countPro').text(respones.length);
+            for(var i=0; i<respones.length; i++){
+                var strShoe = '' +
+                    '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe('+ respones[i].product_id +')">' +
+                    '<img src="'+ respones[i].image_name+'" class="img-responsive center-block img-shoe"/>' +
+                    '<div>'+ respones[i].product_name+'</div>' +
+                    '<div class="price-shoe"><span>'+ respones[i].price+'</span><span>&nbsp;VND</span></div>' +
+                    '</div>';
+                $("#main-right").append(strShoe);
+            }
+
+
+        }
+    });
 }
 
 //bam vao giay nu
@@ -29,15 +43,28 @@ function GoShoeFemale() {
     $("#main-right-top").removeClass("hidden");
     $("#title-submenu").text("Giày nữ");
     $("#main-right").empty();
-    var strShoe = '' +
-        '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe()">' +
-        '<img src="images/3.jpg" class="img-responsive center-block img-shoe"/>' +
-        '<div>Giày Tây Nam Da Cột Dây Thời Trang Zapas GT026 (Đen ) + Tặng Ví Nam Thời Trang</div>' +
-        '<div class="price-shoe"><span>400.000</span><span>&nbsp;VND</span></div>' +
-        '</div>'
-    for(var i=0; i<10; i++){
-        $("#main-right").append(strShoe);
-    }
+
+    $.ajax({
+        type: "GET",
+        url: '../service/products/getType/nữ',
+        dataType: 'json',
+        data: '',
+        success: function (respones) {
+
+            $('#countPro').text(respones.length);
+            for(var i=0; i<respones.length; i++){
+                var strShoe = '' +
+                    '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe('+ respones[i].product_id +')">' +
+                    '<img src="'+ respones[i].image_name+'" class="img-responsive center-block img-shoe"/>' +
+                    '<div>'+ respones[i].product_name+'</div>' +
+                    '<div class="price-shoe"><span>'+ respones[i].price+'</span><span>&nbsp;VND</span></div>' +
+                    '</div>';
+                $("#main-right").append(strShoe);
+            }
+
+
+        }
+    });
 }
 
 //bam vao giam gia
@@ -119,6 +146,40 @@ function btnBuyShoe(product_id) {
     window.location.href = "detail.html";
 }
 
+//hàm tìm kiếm
+function Search() {
+    var tukhoa = $('#txtSearch').val();
+    if(tukhoa == ''){
+
+    }
+    else{
+        $.ajax({
+            type: "GET",
+            url: '../service/products/search/'+tukhoa,
+            dataType: 'json',
+            data: '',
+            success: function (respones) {
+                $("#main-right-top").removeClass("hidden");
+                $("#title-submenu").text("Kết quả tìm kiếm" );
+                $('#countPro').text(respones.length);
+                $("#main-right").empty();
+
+                for(var i=0; i<respones.length; i++){
+                    var strShoe = '' +
+                        '<div class="col-sm-4 text-center view-shoe animated slideInUp" onclick="btnBuyShoe('+ respones[i].product_id +')">' +
+                        '<img src="'+ respones[i].image_name+'" class="img-responsive center-block img-shoe"/>' +
+                        '<div>'+ respones[i].product_name+'</div>' +
+                        '<div class="price-shoe"><span>'+ respones[i].price+'</span><span>&nbsp;VND</span></div>' +
+                        '</div>';
+                    $("#main-right").append(strShoe);
+                }
+
+
+            }
+        });
+    }
+}
+
 function getAllProduct() {
     $.ajax({
         type: "GET",
@@ -133,7 +194,7 @@ function getAllProduct() {
                     '<img src="'+ respones[i].image_name+'" class="img-responsive center-block img-shoe"/>' +
                     '<div>'+ respones[i].product_name+'</div>' +
                     '<div class="price-shoe"><span>'+ respones[i].price+'</span><span>&nbsp;VND</span></div>' +
-                    '</div>'
+                    '</div>';
 
                 $("#main-right").append(strShoe);
             }

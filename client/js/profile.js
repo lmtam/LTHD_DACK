@@ -5,4 +5,5 @@ $(document).ready(function () {
     //auto load file
     $( "#m-header" ).load("menu-bar.html");
     $( "#myModal" ).load("modal.html");
+    getUserById();
 });

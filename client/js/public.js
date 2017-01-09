@@ -65,41 +65,79 @@ function login() {
             password:password
         },
         success: function (response) {
-            //
+            console.log(response);
             // console.log('123456');
-            if(response == 'Success'){
-                setCookie('isLogin','1');
-                $("#myModal").modal('hide');
+            if(response == 'Error'){
+                sweetAlert('Tài khoản hoặc mật khẩu sai.','','error');
+
             }
             else{
-                sweetAlert('Tài khoản hoặc mật khẩu sai.','','error');
+                setCookie('isLogin','1');
+                // setCookie('token',response);
+                $("#myModal").modal('hide');
+                $("#user-name").text(response[0].name);
+                $("#user-photo").attr('src', "images/hoamai.jpg");
+                $("#no-login").addClass("hidden");
+                $("#logged").removeClass("hidden");
+
             }
         }
     });
 }
 function register() {
-    var name = '';
-    var username = 'tamle';
-    var password = '123456';
-    var confirmpassword = '';
+    var name = $('#txtname').val();
+    var username = $('#txtemailRegister').val();
+    var password = $('#txtpasswordRegister').val();
+    var confirmpassword = $('#txtConfirmpasswordRegister').val();
     var ngaysinh = '';
-    $.ajax({
-        type: "POST",
-        url: '../service/register',
-        dataType: 'json',
-        data: {
-            username:username,
-            password:password,
+    if(password == confirmpassword){
+        $.ajax({
+            type: "POST",
+            url: '../service/register',
+            dataType: 'json',
+            data: {
+                username:username,
+                password:password,
+                name:name
 
-        },
-        success: function (respones) {
+            },
+            success: function (respones) {
+                if(respones == 'error'){
 
+                }
+                else{
+                    sweetAlert('Tạo tài khoản thành công','','success');
+                }
 
-        }
-    });
+            }
+        });
+    }
+    else{
+        sweetAlert('Confirm password không đúng','','error')
+    }
+
 }
 function logout() {
-    
+    $.ajax({
+        type: "GET",
+        url: '../service/logout',
+        dataType: 'json',
+        data: '',
+        success: function (respones) {
+            if(respones == 'error'){
+
+            }
+            else{
+                setCookie('isLogin','0');
+                $("#no-login").removeClass("hidden");
+                $("#logged").addClass("hidden");
+            }
+
+        },
+        error:function (res) {
+            console.log(res);
+        }
+    });
 }
 
 function Carts() {
@@ -120,21 +158,21 @@ window.fbAsyncInit = function() {
         xfbml      : true,
         version    : 'v2.5'
     });
-    FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-            //alert("Dang nhap thanh cong");
-            $("#no-login").addClass("hidden");
-            $("#logged").removeClass("hidden");
-            FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,picture.width(150).height(150)'}, function(response) {
-                $("#user-name").text(response.name);
-                $("#user-photo").attr('src', response.picture.data.url);
-            });
-        } else if (response.status === 'not_authorized') {
-            //alert("Ban chua dang nhap");
-        } else if(response.status === 'unknown'){
-
-        }
-    });
+    // FB.getLoginStatus(function(response) {
+    //     if (response.status === 'connected') {
+    //         //alert("Dang nhap thanh cong");
+    //         $("#no-login").addClass("hidden");
+    //         $("#logged").removeClass("hidden");
+    //         FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,picture.width(150).height(150)'}, function(response) {
+    //             $("#user-name").text(response.name);
+    //             $("#user-photo").attr('src', response.picture.data.url);
+    //         });
+    //     } else if (response.status === 'not_authorized') {
+    //         //alert("Ban chua dang nhap");
+    //     } else if(response.status === 'unknown'){
+    //
+    //     }
+    // });
 };
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -154,6 +192,19 @@ function loginfacebook() {
                 $("#user-photo").attr('src', response.picture.data.url);
                 $("#no-login").addClass("hidden");
                 $("#logged").removeClass("hidden");
+                setCookie('isLogin','1');
+                $.ajax({
+                    type: "GET",
+                    url: '../service/carts/get',
+                    dataType: 'json',
+                    data: {
+                        user_name:response.id,
+                        name: response.name
+                    },
+                    success: function (respones) {
+
+                    }
+                });
             });
             statusfacebook = 'connected';
             //console.log(statusfacebook);
@@ -170,4 +221,37 @@ function logoutfacebook() {
     // FB.logout(function(response) {
     //
     // }, {scope: 'email'});
+}
+
+
+function getUserById() {
+    var isLogin = getCookie('isLogin');
+    if (isLogin == 1) {
+        $.ajax({
+            type: "GET",
+            url: '../service/users/get',
+            dataType: 'json',
+            data: '',
+            success: function (respones) {
+                if (respones == 'error') {
+
+                }
+                else {
+                    console.log(respones[0].name);
+                    $("#user-name").text(respones[0].name);
+                    $("#user-photo").attr('src', "images/hoamai.jpg");
+                    $("#no-login").addClass("hidden");
+                    $("#logged").removeClass("hidden");
+                }
+
+            },
+            error: function (res) {
+                console.log(res);
+            }
+        });
+    }
+    else{
+        return;
+    }
+
 }
