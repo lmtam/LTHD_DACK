@@ -52,38 +52,49 @@ function getCommentByProductId(product_id) {
         }
     });
 }
+function comment() {
+
+}
+
 function addcomment() {
     //du lieu test
     var product_id = getCookie('product_id');
-    var content = $('#txtcomment').val();
-    if(content == ''){
-        sweetAlert('Bạn phải nhập vào ô comment','','error');
-        return;
-    }
-    $.ajax({
-        type: "POST",
-        url: '../service/comments/add',
-        dataType: 'json',
-        data: {
-            product_id: product_id,
-            content : content,
-
-
-        },
-        success: function (response) {
-            // console.log(response);
-            var strTemp = '<div id="" class="row" style="background-color: #ddd; margin-top: 10px">'+
-                '<div class="col-sm-2">'+
-                '<img src="images/user.jpg" height="50" width="50">'+
-                '</div>'+
-                '<div class="col-sm-10 ">'+
-                '<div class="cus-name-comment">'+response[0].name+'</div>'+
-                '<div>'+ content +'</div>'+
-                '</div>'+
-                '</div>';
-            $('#cmtBox').append(strTemp);
+    var isLogin = getCookie('isLogin');
+    if(isLogin){
+        var content = $('#txtcomment').val();
+        if(content == ''){
+            sweetAlert('Bạn phải nhập vào ô comment','','error');
+            return;
         }
-    });
+        $.ajax({
+            type: "POST",
+            url: '../service/comments/add',
+            dataType: 'json',
+            data: {
+                product_id: product_id,
+                content : content,
+
+
+            },
+            success: function (response) {
+                // console.log(response);
+                var strTemp = '<div id="" class="row" style="background-color: #ddd; margin-top: 10px">'+
+                    '<div class="col-sm-2">'+
+                    '<img src="images/user.jpg" height="50" width="50">'+
+                    '</div>'+
+                    '<div class="col-sm-10 ">'+
+                    '<div class="cus-name-comment">'+response[0].name+'</div>'+
+                    '<div>'+ content +'</div>'+
+                    '</div>'+
+                    '</div>';
+                $('#cmtBox').append(strTemp);
+            }
+        });0
+    }
+    else{
+        sweetAlert('Bạn Phải đăng nhập để gửi bình luận');
+    }
+
 }
 
 function getProductById($product_id) {

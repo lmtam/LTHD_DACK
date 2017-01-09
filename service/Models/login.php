@@ -46,10 +46,10 @@
 					}
 					
 					Helper::Disconnection($this->con);
-					return "Đăng nhập thành công";
+					return "Success";
 				}
 				Helper::Disconnection($this->con);
-				return "Đăng nhập thất bại";
+				return "Error";
 
 			}
 			catch(Exception $e)
