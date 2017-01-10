@@ -25,7 +25,7 @@
                 <div class="input-group pull-right hidden-xs" style="width: 500px; padding-right:10px">
                     <input class="form-control" placeholder="Tìm sản phẩm...." id="txtSearch" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="Search()">
+                        <button class="btn btn-default" type="button" onclick="SearchName()">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
@@ -108,23 +108,23 @@
                     </div>
                     <div class="item-search-main">
                         <i>Giá từ</i>
-                        <select class="form-control">
-                            <option>100.000</option>
-                            <option>200.000</option>
-                            <option>300.000</option>
-                            <option>400.000</option>
-                            <option>500.000</option>
+                        <select class="form-control" id="cbxPrice1">
+                            <option value="1">100.000</option>
+                            <option value="2">200.000</option>
+                            <option value="3">300.000</option>
+                            <option value="4">400.000</option>
+                            <option value="5">500.000</option>
                         </select>
                         <i>Giá đến</i>
-                        <select class="form-control">
-                            <option>600.000</option>
-                            <option>700.000</option>
-                            <option>800.000</option>
-                            <option>900.000</option>
-                            <option>1.000.000</option>
+                        <select class="form-control" id="cbxPrice2">
+                            <option value="10">1.000.000</option>
+                            <option value="12">1.200.000</option>
+                            <option value="14">1.400.000</option>
+                            <option value="16">1.600.000</option>
+                            <option value="20">2.000.000</option>
                         </select>
                         <div style="padding: 10px; text-align: center">
-                            <button class="btn btn-default">Tìm kiếm</button>
+                            <button class="btn btn-default" onclick="SearchPrice()">Tìm kiếm</button>
                         </div>
                         <i>Màu sắc</i>
                         <div>

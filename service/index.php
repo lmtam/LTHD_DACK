@@ -176,12 +176,20 @@
         $con=new Product_Controller();
         echo json_encode($con->getProductByType($type));
     });
-	$app->get("/products/search/{name}",function($request,$response,$args){
+	$app->get("/products/searchName/{name}",function($request,$response,$args){
 
 	    $product_name =$args["name"];
 
         $con=new Product_Controller();
         echo json_encode($con->getProductByName($product_name));
+    });
+    $app->get("/products/searchPrice/{price1}/{price2}",function($request,$response,$args){
+
+        $price1 =$args["price1"];
+        $price2 =$args["price2"];
+
+        $con=new Product_Controller();
+        echo json_encode($con->getProductByPrice($price1,$price2));
     });
 	$app->post("/products/add",function($request,$response,$args)
 	{

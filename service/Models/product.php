@@ -8,6 +8,9 @@ class Product{
     {
         $temp=new DBConnection();
         $this->con=$temp->Connection();
+        if(empty($this->con)){
+            die('123');
+        }
     }
     function getAllProduct(){
         try{
@@ -52,6 +55,30 @@ class Product{
             
             $temp=$this->con->prepare($sql);
             $temp->bindParam('product_name',$product_name,PDO::PARAM_STR);
+            $temp->execute();
+            $list = $temp->fetchAll(PDO::FETCH_BOTH);
+            Helper::Disconnection($this->con);
+//            $result = [0=> ['product_name'=>'','product_detail_id'=>'','product_name'=>'','type'=>'',]];
+
+//            echo json_encode($list);
+//            die();
+//            echo "<pre>";
+//            print_r($list);
+//            die();
+            return $list;
+        }
+        catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+    function getProductByPrice($price1, $price2){
+        try{
+
+            $sql = "SELECT * FROM products  WHERE  price>=:price1 AND price<=:price2";
+
+            $temp=$this->con->prepare($sql);
+            $temp->bindParam('price1',$price1,PDO::PARAM_STR);
+            $temp->bindParam('price2',$price2,PDO::PARAM_STR);
             $temp->execute();
             $list = $temp->fetchAll(PDO::FETCH_BOTH);
             Helper::Disconnection($this->con);

@@ -3,7 +3,7 @@ require_once("constant.php");
 
 class DBConnection
 {
-	private $con;
+	private $con = null;
 
 	public function Connection()
 	{

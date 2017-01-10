@@ -29,6 +29,14 @@
             }
             return "Lỗi dữ liệu Null hoặc không hợp lệ";
         }
+        public function getProductByPrice($price1,$price2)
+        {
+            if(Helper_Controller::isValuable($price1) && Helper_Controller::isValuable($price2))
+            {
+                return ($this->model->getProductByPrice($price1,$price2));
+            }
+            return "Lỗi dữ liệu Null hoặc không hợp lệ";
+        }
         public function getProductByType($type)
         {
             if(Helper_Controller::isValuable($type))
