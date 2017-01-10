@@ -41,9 +41,9 @@ function getCommentByProductId(product_id) {
         data:'',
         success: function (respones) {
             for(var i=0; i<respones.length; i++){
-                var strTemp = '<div id="" class="row" style="background-color: #ddd; margin-top: 10px">'+
+                var strTemp = '<div id="" class="row" style="margin-top: 10px">'+
                     '<div class="col-sm-2">'+
-                    '<img src="images/user.jpg" height="50" width="50">'+
+                    '<img src="images/hoamai.jpg" height="50" width="50">'+
                     '</div>'+
                     '<div class="col-sm-10 ">'+
                     '<div class="cus-name-comment">'+ respones[i].name+'</div>'+
@@ -82,9 +82,9 @@ function addcomment() {
             },
             success: function (response) {
                 // console.log(response);
-                var strTemp = '<div id="" class="row" style="background-color: #ddd; margin-top: 10px">'+
+                var strTemp = '<div id="" class="row" style="margin-top: 10px">'+
                     '<div class="col-sm-2">'+
-                    '<img src="images/user.jpg" height="50" width="50">'+
+                    '<img src="images/hoamai.jpg" height="50" width="50">'+
                     '</div>'+
                     '<div class="col-sm-10 ">'+
                     '<div class="cus-name-comment">'+response[0].name+'</div>'+
@@ -92,6 +92,7 @@ function addcomment() {
                     '</div>'+
                     '</div>';
                 $('#cmtBox').append(strTemp);
+                $('#txtcomment').val("");
             }
         });0
     }

@@ -5,7 +5,7 @@ $(document).ready(function () {
     $( "#myModal" ).load("modal.html");
     getUserById();
 });
-
+var tonghang =0;
 function getCartProduct() {
     $.ajax({
         type: "GET",
@@ -14,6 +14,7 @@ function getCartProduct() {
         data: '',
         success: function (respones) {
             var tongtien =0;
+            tonghang = respones.length;
             for(var i=0; i<respones.length; i++){
                 var strInfor = '<div class="row  product-cart " id="product_detail_'+ respones[i].product_detail_id+'" style="margin-top: 20px;">'+
                                 '<div class="col-sm-2">'+
@@ -44,7 +45,7 @@ function getCartProduct() {
                                 '</div>';
                 $('#product_row').append(strInfor);
                 tongtien += (parseInt(respones[i].price)*parseInt(respones[i].count));
-
+                
 
             }
             $('#tongtien').text(tongtien);
@@ -52,7 +53,14 @@ function getCartProduct() {
     });
 }
 
-
+function Payment() {
+    if(tonghang > 0){
+        window.location.href='payment.html';
+    }
+    else{
+        sweetAlert('Giỏ hàng trống', "", "error");
+    }
+}
 
 function deleteOneProduct(product_detail_id) {
     // console.log(product_detail_id);

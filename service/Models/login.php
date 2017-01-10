@@ -143,10 +143,11 @@
         function LoginFacebook($data){
             $username=$data["username"];
             $name=$data["name"];
-            $password ='';
+            $password ='123';
             $admin="N";
             $created_day= Date('Y-m-d H:i:s');
-            $sqlSelect = " SELECT * FROM users WHERE user_name=:username";
+
+            $sqlSelect = "SELECT * FROM users WHERE user_name=:username";
             $temp1=$this->con->prepare($sqlSelect);
             $temp1->bindParam('username',$username,PDO::PARAM_STR);
             $temp1->execute();
@@ -157,11 +158,10 @@
             }
             else{
                 try {
-                    $sql = "INSERT INTO users(user_name,password,name,created_day,admin) VALUES('$username','$password','$name','$created_day','$admin')";
+                    $sql = "INSERT INTO users (user_name,password,name,created_day,admin)"." VALUES('$username','$password','$name','$created_day','$admin')";
                     $temp = $this->con->prepare($sql);
                     $temp->execute();
-
-                    $sqlSelect1 = " SELECT * FROM users WHERE user_name=:username";
+                    $sqlSelect1 = "SELECT * FROM users WHERE user_name=:username";
                     $temp2=$this->con->prepare($sqlSelect1);
                     $temp2->bindParam('username',$username,PDO::PARAM_STR);
                     $temp2->execute();
@@ -169,6 +169,7 @@
                         $list = $temp2->fetchAll(PDO::FETCH_BOTH);
                         $_SESSION['user_id'] = $list[0]['user_id'];
                         $_SESSION["login"]=1;
+
                     }
                     else{
                         return "error";

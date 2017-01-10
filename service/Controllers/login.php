@@ -51,6 +51,7 @@
             return $this->model->getUserById($user_id);
         }
         public function LoginFacebook($data){
+
             return $this->model->LoginFacebook($data);
         }
     }

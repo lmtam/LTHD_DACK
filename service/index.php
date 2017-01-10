@@ -27,10 +27,12 @@
 	$app->post('/login/facebook',function($request,$response,$args){
         $con=new Login_Controller();
         $input=$request->getParsedBody();
+
         $data=array(
             "username"=>$input["user_name"],
             "name"=>$input["name"]
         );
+
         echo json_encode($con->LoginFacebook($data));
     });
 	$app->post('/login/admin',function($request,$response,$args){

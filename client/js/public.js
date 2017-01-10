@@ -189,13 +189,13 @@ function loginfacebook() {
             $("#myModal").modal("hide");
             FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,picture.width(150).height(150)'}, function(response) {
                 $("#user-name").text(response.name);
-                $("#user-photo").attr('src', response.picture.data.url);
+                $("#user-photo").attr('src', 'images/hoamai.jpg');
                 $("#no-login").addClass("hidden");
                 $("#logged").removeClass("hidden");
                 setCookie('isLogin','1');
                 $.ajax({
-                    type: "GET",
-                    url: '../service/carts/get',
+                    type: "POST",
+                    url: '../service/login/facebook',
                     dataType: 'json',
                     data: {
                         user_name:response.id,
@@ -226,6 +226,7 @@ function logoutfacebook() {
 
 function getUserById() {
     var isLogin = getCookie('isLogin');
+    // console.log(isLogin);
     if (isLogin == 1) {
         $.ajax({
             type: "GET",
@@ -233,6 +234,7 @@ function getUserById() {
             dataType: 'json',
             data: '',
             success: function (respones) {
+                console.log(respones);
                 if (respones == 'error') {
 
                 }
